@@ -74,6 +74,11 @@ nav a:active {
 	background-color: maroon;
 	border: 3px inset #dbb;
 }
+nav .this {
+	cursor: default;
+	pointer-events: none;
+	font-weight: bold;
+}
 
 /* общее: заголовок: ПСЕВДОЛОГОТИП */
 header img {
