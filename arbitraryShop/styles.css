@@ -1,0 +1,163 @@
+﻿/* о б щ е е :  разметка */
+body {
+	background-color: #f8f8f8;
+	margin: 0;
+}
+header {
+	background-color: #e6e6e6;
+	border-bottom: 2px solid #606060;
+	margin: 0;
+	padding: 1px 10px 5px;
+}
+main {
+	min-height: 700px;
+	margin: 0 40px;
+}
+footer {
+	background-color: #d4d4d4;
+	border-top: 2px solid #606060;
+	margin: 0;
+	padding: 5px 10px 10px;
+	font-size: 10pt;
+}
+
+nav li, h1, h2 {
+	font-variant: small-caps;
+}
+.mainText {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+/* о б щ е е :  навигация */
+nav li {
+	list-style-type: none;
+	float: left;
+	margin: 5px 10px 15px;
+	padding: 4px 8px;
+	border: 3px outset;
+	background-color: #f0f0f0;
+	font-size: 1.1em;
+}
+nav a {
+	text-decoration: none;
+}
+nav a:hover {
+	color: yellow;
+}
+
+
+/* г л а в н а я */
+section.index div {
+	margin: 0px 50px;
+	text-indent: 18px;
+}
+.index .alert {
+	margin-top: 70px;
+	color: #707070;
+}
+
+/* к а т а л о г */
+.catalog div.wareImage {
+	background-color: #f0f0f0;
+	border: 1px solid #909090;
+	width: 160px;
+	padding: 5px 7px;
+	margin: 0 20px 10px 0;
+	text-align: center;
+	/*float: left;*/ /* - из-за разной высоты некрасиво, и в большем количестве
+	начнут цепляясь друг за друга сыпаться на левую стенку как тетрис;
+	нужен display:inline-block*/
+}
+.catalog .wareImage img {
+	width: 100%;
+	border: 1px solid #d4d4d4;
+}
+
+
+/* к а т а л о г :  страницы товаров */
+.warePage h4 {
+	color: black;
+	font-size: 18px;
+	font-weight: 400;
+	background-color: #eaeaea;
+	padding: 5px 70px;
+	border: 1px solid #d0d0d0;
+	border-left: none; border-right: none;
+	margin: auto 15px;
+}
+.warePage .brief {
+	color: #707070;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 16px;
+	letter-spacing: 1px;
+}
+.warePage .thorough {
+	color: #484343;
+	text-align: left;
+	/* смотри класс mainText выше */
+}
+.warePage ul {
+	list-style-type: none;
+	margin: 10px 0 15px -20px;
+	color: #242424;
+	letter-spacing: 0.5px;
+	line-height: 26px;
+}
+.warePage .icon {
+	height: 22px;
+	margin: 0 7px 0 0;
+	vertical-align: center;
+}
+.warePage a > img {
+	height: 400px;
+	padding: 5px 7px;
+	background-color: #d0d0d0;
+}
+
+
+/* к о н т а к т ы :  форма */
+form.sendUsMessage {
+	background-color: #f0f0f0;
+	border: 2px solid #909090;
+	width: 550px;
+	padding: 15px 25px 35px;
+}
+.sendUsMessage h2 {
+	text-align: center;
+	background-color: #e6e6e6;
+	margin: -15px -25px 5px;
+	padding: 15px 25px;
+	border-bottom: 2px solid darkgrey;
+}
+.sendUsMessage .line input {
+	float: right;
+	width: 40%;
+	padding: 3px 7px;
+	font: normal 12pt serif;
+}
+p.radio {
+	float: right;
+	margin-top: 0;
+}
+.sendUsMessage textarea {
+	border: 1px solid #777;
+	width: 100%;
+	resize: vertical;
+	font: normal 12pt serif;
+}
+.sendUsMessage .beforeTextarea {
+	border: 1px solid #999;
+	border-bottom: none;
+	background-color: #fcfcfc;
+	padding: 2px 5px;
+}
+
+/* к о н т а к т ы :  карта */
+div.map {
+	width: 600px;
+	margin: 25px auto;
+	border: 1px solid #d0d0d0;
+}
