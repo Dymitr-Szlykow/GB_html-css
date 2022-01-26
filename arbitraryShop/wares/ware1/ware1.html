@@ -8,63 +8,79 @@
 </head>
 
 <body>
-	<header>
+	<header><div class="container">
+		<img src="img/image.png">
 		<nav>
 			<ul>
 				<li><a href="../../index.html">Главная</a></li>
 				<li><a href="../../catalog.html">Каталог&nbsp;товаров</a></li>
 				<li><a href="../../contacts.html">Контакты</a></li>
 			</ul>
-			<div style="clear: left"></div>
 		</nav>
-	</header>
+	</div></header>
 
-	<main>
+	<main class="container">
 		<h1 align="center">Магазин&nbsp;клуба&nbsp;обжор</h1>
 
 		<section class="warePage">
 			<h2>Страус&nbsp;африканский</h2>
-			<p class="brief">Бескилевая нелетающая птица. Имеет красное мясо, по&nbsp;вкусу ближе к&nbsp;говядине.</p>
 
-			<p><a href="../../img/Ostrich.jpg" target="_blank"><img src="../../img/Ostrich.jpg" alt="Ой, досадно. Но вы ведь можете себе представить страуса?"></a></p>
+			<article class="ware-face">
+				<a href="../../img/Ostrich.jpg" target="_blank"><img src="../../img/Ostrich.jpg" alt="Ой, досадно. Но вы ведь можете себе представить страуса?"></a>
 
-			<h4>Характеристики товара.</h4>
-			<table class="techchar">
-				<caption>технические характеристики</caption>
-				<tr><th>показатель</th><th>значение</th></tr>
-				<tr><td>высота:</td><td>до 270 см</td></tr>
-				<tr><td>масса:</td><td>до 156 кг</td></tr>
-			</table>
-			<ul>
-				<li><img class="icon" src="icon.png"> Низкокаллорийное мясо с&nbsp;высоким содержанием белков (20,5%).</li>
-				<li><img class="icon" src="icon.png"> Низкое содержание жиров (до&nbsp;2%) и холестерина (до&nbsp;0,062/100&nbsp;г).</li>
-				<li><img class="icon" src="icon.png"> Высокое содержание железа, цинка.</li>
-			</ul>
-			<div style="clear: right"></div>
+				<p class="brief">Бескилевая нелетающая птица. Имеет красное мясо, по&nbsp;вкусу ближе к&nbsp;говядине.</p>
 
-			<h4>Подробное описание товара.</h4>
-			<div class="thorough mainText">
-				<p>Африканский страус — самая крупная из&nbsp;современных птиц. Страус имеет плотное телосложение, длинную шею и небольшую уплощённую голову. Клюв прямой и плоский, с&nbsp;роговым «когтем» на&nbsp;надклювье, довольно мягкий. Глаза большие, с&nbsp;густыми ресницами на&nbsp;верхнем веке.</p>
+				<button class="buybutton" onclick="document.getElementById('popup').style.display='block'">Купить</button>
 
-				<p>Страусы — нелетающие птицы. Для&nbsp;них характерно полное отсутствие киля и слаборазвитая грудная мускулатура; скелет не&nbsp;пневматичен, за&nbsp;исключением бедренных костей. Крылья у&nbsp;страусов недоразвитые; два пальца на&nbsp;них заканчиваются когтями, или шпорами. Задние конечности длинные и сильные, всего с&nbsp;двумя пальцами. Один&nbsp;из&nbsp;пальцев заканчивается подобием рогового копыта — на&nbsp;него птица опирается при&nbsp;беге.</p>
-				
-				<table class="editableTab" cols="4" contenteditable spellcheck="false">
-					<caption>произвольная таблица для произвольного содержимого посетителя<br>(серьезно, можете переписывать содержимое, вот весело-то!)</caption>
-					<tr><td colspan="4" style="max-width:600px">широкая ячейка</td></tr>
-					<tr><td rowspan="4" style="max-width:150px">высокий столбец</td>
-						<td colspan="3" style="max-width:450px">ячейка поуже</td></tr>
-					<tr><td rowspan="3" style="max-width:150px">столбец пониже</td>
-						<td colspan="2" style="max-width:300px">фигней какой-то страдаю</td></tr>
-					<tr><td rowspan="2" style="max-width:150px">содержимое можно менять</td>
-						<td style="max-width:150px">ниже пусто</td></tr>
-					<tr><td style="max-width:150px"></td></tr>
+				<div id="popup">
+					<p>Мы учтем ваше пожелание. Благодарим вас.</p>
+					<button onclick="document.getElementById('popup').style.display='none'">принято</button>
+				</div>
+			</article>
+
+			<article class="ware-descriptions">
+				<h4>Характеристики товара.</h4>
+
+				<table class="techchar">
+					<caption>технические характеристики</caption>
+					<tr><th>показатель</th><th>значение</th></tr>
+					<tr><td>высота:</td><td>до 270 см</td></tr>
+					<tr><td>масса:</td><td>до 156 кг</td></tr>
 				</table>
-			</div>
+
+				<ul>
+					<li><img class="icon" src="icon.png"> Низкокаллорийное мясо с&nbsp;высоким содержанием белков (20,5%).</li>
+					<li><img class="icon" src="icon.png"> Низкое содержание жиров (до&nbsp;2%) и холестерина (до&nbsp;0,062/100&nbsp;г).</li>
+					<li><img class="icon" src="icon.png"> Высокое содержание железа, цинка.</li>
+				</ul>
+
+				<h4>Подробное описание товара.</h4>
+
+				<div class="thorough mainText">
+					<p>Африканский страус — самая крупная из&nbsp;современных птиц. Страус имеет плотное телосложение, длинную шею и небольшую уплощённую голову. Клюв прямой и плоский, с&nbsp;роговым «когтем» на&nbsp;надклювье, довольно мягкий. Глаза большие, с&nbsp;густыми ресницами на&nbsp;верхнем веке.</p>
+
+					<p>Страусы — нелетающие птицы. Для&nbsp;них характерно полное отсутствие киля и слаборазвитая грудная мускулатура; скелет не&nbsp;пневматичен, за&nbsp;исключением бедренных костей. Крылья у&nbsp;страусов недоразвитые; два пальца на&nbsp;них заканчиваются когтями, или шпорами. Задние конечности длинные и сильные, всего с&nbsp;двумя пальцами. Один&nbsp;из&nbsp;пальцев заканчивается подобием рогового копыта — на&nbsp;него птица опирается при&nbsp;беге.</p>
+
+					<table class="editableTab" cols="4" contenteditable spellcheck="false">
+						<caption>произвольная таблица для произвольного содержимого посетителя<br>(серьезно, можете переписывать содержимое, вот весело-то!)</caption>
+						<tr><td colspan="4" style="max-width:600px">широкая ячейка</td></tr>
+						<tr><td rowspan="4" style="max-width:150px">высокий столбец</td>
+							<td colspan="3" style="max-width:450px">ячейка поуже</td></tr>
+						<tr><td rowspan="3" style="max-width:150px">столбец пониже</td>
+							<td colspan="2" style="max-width:300px">фигней какой-то страдаю</td></tr>
+						<tr><td rowspan="2" style="max-width:150px">содержимое можно менять</td>
+							<td style="max-width:150px">ниже пусто</td></tr>
+						<tr><td style="max-width:150px"></td></tr>
+					</table>
+				</div>
+			</article>
 		</section>
 	</main>
 
-	<footer>
-		<p align="center"><a href="https://allthatsinteresting.com/charles-darwin-glutton-club" target="_blank">the Glutton Club</a>, или&nbsp;же <a href="https://oadam.livejournal.com/81806.html" target="_blank">Клуб обжор</a>, во&nbsp;главе с&nbsp;его председателем Charles Robert Darwin &copy; все права защищены ото&nbsp;всех и не&nbsp;принадлежат никому</p>
-	</footer>
+	<footer><div class="container">
+		<div class="disclaimer">&copy; все права защищены ото&nbsp;всех и не&nbsp;принадлежат никому</div>
+
+		<div class="content"><a href="https://allthatsinteresting.com/charles-darwin-glutton-club" target="_blank">the Glutton Club</a>, или&nbsp;же <a href="https://oadam.livejournal.com/81806.html" target="_blank">Клуб обжор</a>, во&nbsp;главе с&nbsp;его председателем Charles Robert Darwin; wares@gluttonclub.com</div>
+	</div></footer>
 </body>
 </html>
