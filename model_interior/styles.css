@@ -89,6 +89,7 @@ div.promo-product {
 }
 div.promo-product.twin-left  { background-image: url(img/promoproduct-left-back.jpeg); }
 div.promo-product.twin-right { background-image: url(img/promoproduct-right-back.jpeg); }
+div.promo-product.theProduct  { background-image: url(img/promoproduct-left-back.jpeg); }
 
 section.hot-deals {
 	height: 800px;	
@@ -112,9 +113,35 @@ div.ascription.mobile-app 			{ width: 600px; padding-top: 125px; }
 
 /* разметка: СТРАНИЦЫ ТОВАРОВ */
 section.product-details.menu {
-	height: 71px;
+	padding: 12px;
 	background-color: #f4f4f4;
 	text-align: center;
+}
+
+
+section.theProduct {
+	padding: 120px 98px;
+	display: flex;
+}
+div.theProduct {
+	flex-grow: 0;
+	width: 570px;
+	text-align: center;
+}
+img.theProduct {
+	width: inherit;
+}
+img.minipictures {
+	margin: 10px;
+	cursor: pointer;
+}
+
+
+div.product-description {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 /* X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X */
@@ -229,6 +256,7 @@ div.contacts {
 }
 /*img*/.contacts-spot {
 	margin-top: -2%;
+	height: 38px;
 }
 h3.contacts {
 	margin-top: 4%;
@@ -332,14 +360,17 @@ div.rewind-button {
 	text-align: center;
 }
 button.rewind-button {
-	padding: 8px;
+	padding: 3px;
 	border-color: transparent;
 	border-radius: 50%;
 	background-color: inherit;
 	cursor: pointer;
 }
+img.rewind-button {
+	height: 35px;
+}
 button.rewind-button:hover {
-	transform: scale(1.2);
+	transform: scale(1.1);
 	background-color: #e6e6e6;
 }
 button.rewind-button:active {
@@ -353,23 +384,26 @@ nav {
 	justify-content: right;
 	align-items: center;
 }
-nav li, ul.menu li {
+ul.menu li {
 	display: inline-block;
 	font-size: 14px;
 	font-weight: 700;
+	letter-spacing: 1.5px;
 	text-transform: uppercase;
 }
 ul.menu button {
 	font-size: 18px;
 	text-transform: uppercase;
-	letter-spacing: 1.5px;
+	letter-spacing: 1.2px;
 	cursor: pointer;
 }
 /* содержимое: меню: СТРАНИЦА ТОВАРА */
-.product-details.menu li a {
-	border-bottom-color: transparent;
-	padding: 24px inherit;
-	font-size: 22px;
+ul.menu a.place.product-details {
+	font-size: 18px;
+	padding-top: 12px;
+}
+section.product-details a.place.active {
+	border-bottom-color: transparent!important; 
 }
 
 /* X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X */
@@ -409,6 +443,7 @@ div.search {
 	display: inline-block;
 	position: relative;
 	white-space: nowrap;
+	margin-top: -7px;
 }
 input.search {
 	float: left;
@@ -549,6 +584,13 @@ ul.hreferences-socmedia {
 	font-size: 11px;
 	font-weight: 100;
 }
+ul.hreferences-socmedia li {
+	display: inline-block;
+}
+img.hreferences-socmedia {
+	height: 28px;
+	margin: 0 2px;
+}
 /* разделы: подвал: ПОЧТА ПОСЕТИТЕЛЯ */
 div.guestEmail {
 	width: 100%;
@@ -564,10 +606,7 @@ input[name="guestEmail"] {
 }
 img.guestEmail {
 	position: absolute;
-	top: 17px;
+	top: 14px;
 	right: 14px;
-	width: 21px;
-	height: 17px;
-	font-size: 12px;
-	font-weight: 100;
+	width: 22px;
 }

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="author" content="Dymitr Szlykow">
@@ -12,9 +12,9 @@
 
 	<header class="product-details endfloat">
 		<div class="container-pic">
-			<a href="index.html" class="logo"><img src="img/logo.svg"></a>
+			<a href="index.html" class="logo"><img src="img/logo.svg" alt="logo"></a>
 			<nav>
-				<ul>
+				<ul class="menu">
 					<li><a href="index.html" class="place">home</a></li><!--
 				 --><li><a href="products.html" class="place">products</a></li><!--
 				 --><li><a href="#" class="place" onclick="document.getElementById('popup').style.display='flex'">history</a></li><!--
@@ -24,12 +24,12 @@
 
 				<div class="search">
 					<input type="search" class="search preload" id="searchInput" placeholder="search for...">
-					<button class="search preload" id="searchButton" onclick="getElementById('searchInput').focus()"><img src="img/search.svg" class="search"></button>
+					<button class="search preload" id="searchButton" onclick="getElementById('searchInput').focus()"><img src="img/search.svg" class="search" alt="icon"></button>
 				</div>
 			</nav>
 
 			<div class="contacts" id="popup">
-				<p class="contacts">Макет не представлен.</p>
+				<p class="contacts" lang="ru">Макет не представлен.</p>
 				<button class="popup" onclick="document.getElementById('popup').style.display='none'">принято</button>
 			</div>
 		</div>
@@ -38,18 +38,33 @@
 	<main class="product-details">
 		<section class="product-details menu">
 			<ul class="menu">
-				<li><a href="#" class="place active">all</a></li><!--
-			 --><li><a href="#" class="place">home</a></li><!--
-			 --><li><a href="#" class="place">office</a></li><!--
-			 --><li><a href="#" class="place">furniture</a></li><!--
-			 --><li><a href="#" class="place">modern</a></li><!--
-			 --><li><a href="#" class="place">classic</a></li>
+				<li><a href="#" class="place product-details active">all</a></li><!--
+			 --><li><a href="#" class="place product-details">home</a></li><!--
+			 --><li><a href="#" class="place product-details">office</a></li><!--
+			 --><li><a href="#" class="place product-details">furniture</a></li><!--
+			 --><li><a href="#" class="place product-details">modern</a></li><!--
+			 --><li><a href="#" class="place product-details">classic</a></li>
 			</ul>
 		</section>
 
 		<section class="theProduct">
-			<div class="container-pic">
-				TODO
+			<div class="theProduct">
+				<img class="theProduct" src="img/theProduct.jpeg">
+				<div class="minipictures">
+					<img class="minipictures" src="img/theProduct-mini1.jpeg">
+					<img class="minipictures" src="img/theProduct-mini2.jpeg">
+					<img class="minipictures" src="img/theProduct-mini3.jpeg">
+				</div>
+			</div>
+			<div class="theProduct product-description">
+				<p>Fishnet Chair</p>
+				<p>hot deal</p>
+				<p>$ 36.7 /sq</p>
+				<p>Order Us</p>
+				<p>The majesty of Mountains - Ugmonk style.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+				<p>Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
 			</div>
 		</section>
 
@@ -114,7 +129,7 @@
 					<p>Suscribe to know about our latest news, products and special offers just for suscribers.</p>
 					<div class="guestEmail">
 						<input type="email" name="guestEmail" placeholder="your email adress"><!-- 
-					 --><img src="#email" alt="icon" class="guestEmail">
+					 --><img src="img/icomoon-paper-plane.svg" alt="icon" class="guestEmail">
 					</div>
 				</li>
 			</ul>
@@ -122,10 +137,10 @@
 			<div class="info">
 				<span>&copy; copyright - interior 2016. All rights reserved.</span>
 				<ul class="hreferences-socmedia endfloat">
-					<a href="#"><img src="#socmedia" alt="icon"></a>
-					<a href="#"><img src="#socmedia" alt="icon"></a>
-					<a href="#"><img src="#socmedia" alt="icon"></a>
-					<a href="#"><img src="#socmedia" alt="icon"></a>
+					<li><a href="#"><img src="img/icomoon-facebook-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
+					<li><a href="#"><img src="img/icomoon-twitter-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
+					<li><a href="#"><img src="img/icomoon-google-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
+					<li><a href="#"><img src="img/icomoon-facebook-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
 				</ul>
 				<span><a href="#">Terms & Conditions</a> / <a href="#">Privacy policy & Cookies</a></span>
 			</div>

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="author" content="Dymitr Szlykow">
@@ -12,9 +12,9 @@
 
 	<header class="true endfloat">
 		<div class="container-pic">
-			<a href="index.html" class="logo"><img src="img/logo.svg"></a>
+			<a href="index.html" class="logo"><img src="img/logo.svg" alt="logo"></a>
 			<nav>
-				<ul>
+				<ul class="menu">
 					<li><a href="index.html" class="place">home</a></li><!--
 				 --><li><a href="products.html" class="place">products</a></li><!--
 				 --><li><a href="#" class="place" onclick="document.getElementById('popup').style.display='flex'">history</a></li><!--
@@ -24,13 +24,13 @@
 
 				<div class="search">
 					<input type="search" class="search preload" id="searchInput" placeholder="search for...">
-					<button class="search preload" id="searchButton" onclick="getElementById('searchInput').focus()"><img src="img/search.svg" class="search"></button>
+					<button class="search preload" id="searchButton" onclick="getElementById('searchInput').focus()"><img src="img/search.svg" class="search" alt="icon"></button>
 				</div>
 			</nav>
 			<h1 class="main">Contact Us</h1>
 
 			<div class="contacts" id="popup">
-				<p class="contacts">Макет не представлен.</p>
+				<p class="contacts" lang="ru">Макет не представлен.</p>
 				<button class="popup" onclick="document.getElementById('popup').style.display='none'">принято</button>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 			<div class="gallery">
 				<div class="gallery-item big">
 					<div class="contacts">
-						<img src="#" class="contacts-spot" alt="Вона тут!">
+						<img src="img/icomoon-location.svg" class="contacts-spot" alt="Over here!">
 						<h3 class="contacts">California</h3>
 						<p class="contacts">Phone:</p>
 						<p class="contacts definition">1900 - 1234 - 5678</p>
@@ -54,7 +54,7 @@
 
 				<div class="gallery-item big">
 					<div class="contacts">
-						<img src="#" class="contacts-spot" alt="Вона тут!">
+						<img src="img/icomoon-location.svg" class="contacts-spot" alt="Over here!">
 						<h3 class="contacts">California</h3>
 						<p class="contacts">Phone:</p>
 						<p class="contacts definition">1900 - 1234 - 5678</p>
@@ -67,7 +67,7 @@
 
 				<div class="gallery-item big">
 					<div class="contacts">
-						<img src="#" class="contacts-spot" alt="Вона тут!">
+						<img src="img/icomoon-location.svg" class="contacts-spot" alt="Over here!">
 						<h3 class="contacts">California</h3>
 						<p class="contacts">Phone:</p>
 						<p class="contacts definition">1900 - 1234 - 5678</p>
@@ -105,7 +105,7 @@
 					<p>Suscribe to know about our latest news, products and special offers just for suscribers.</p>
 					<div class="guestEmail">
 						<input type="email" name="guestEmail" placeholder="your email adress"><!-- 
-					 --><img src="#email" alt="icon" class="guestEmail">
+					 --><img src="img/icomoon-paper-plane.svg" alt="icon" class="guestEmail">
 					</div>
 				</li>
 			</ul>
@@ -113,10 +113,10 @@
 			<div class="info">
 				<span>&copy; copyright - interior 2016. All rights reserved.</span>
 				<ul class="hreferences-socmedia endfloat">
-					<a href="#"><img src="#socmedia" alt="icon"></a>
-					<a href="#"><img src="#socmedia" alt="icon"></a>
-					<a href="#"><img src="#socmedia" alt="icon"></a>
-					<a href="#"><img src="#socmedia" alt="icon"></a>
+					<li><a href="#"><img src="img/icomoon-facebook-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
+					<li><a href="#"><img src="img/icomoon-twitter-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
+					<li><a href="#"><img src="img/icomoon-google-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
+					<li><a href="#"><img src="img/icomoon-facebook-with-circle.svg" alt="icon" class="hreferences-socmedia"></a></li>
 				</ul>
 				<span><a href="#">Terms & Conditions</a> / <a href="#">Privacy policy & Cookies</a></span>
 			</div>
