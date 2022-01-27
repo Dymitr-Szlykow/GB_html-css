@@ -1,0 +1,322 @@
+﻿/*  о б щ е е  */
+* {
+	margin: 0;
+	padding: 0;
+	/* border: 1px dashed black;  /* - чтобы видеть элементы при отладке */
+}
+ul {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+.endfloat:after {
+	content: "";
+	clear: both;
+}
+
+
+/* Р А З М Е Т К А */
+/* разметка: ОБЩЕЕ */
+body {
+	width: 1366px;
+	margin: 0 auto;
+	color: #212121;
+	background-color: #aaa;
+	font-family: 'Montserrat', sans-serif;
+}
+main {
+	background-color: #fff;
+}
+/* разметка: УНИВЕРСАЛЬНОЕ */
+.container-pic {
+	padding: 0 98px;
+}
+.container-white {
+	padding: 120px 98px;
+}
+/* разметка: РАЗДЕЛЫ */
+section.slider {
+	height: 800px;
+	background-image: url(img/slider-back.jpeg);
+	position: relative;
+}
+section.promo-product {
+	display: flex;
+}
+div.promo-product {
+	flex: 1 683px;
+	height: 683px;
+	margin: 0;
+}
+div.promo-product.twin-left  { background-image: url(img/promoproduct-left-back.jpeg); }
+div.promo-product.twin-right { background-image: url(img/promoproduct-right-back.jpeg); }
+
+section.hot-deals {
+	height: 800px;	
+	background-image: url(img/hotdeals-back.jpeg);
+}
+div.exclusives-left {
+	width: 570px;
+	height: 570px;
+	background-image: url(img/exclusives-left.jpeg);
+}
+section.mobile-app {
+	height: 516px;
+	background-image: url(img/mobileapp-back.jpeg);
+}
+/* разметка: КАРТИНКИ */
+div.show-productpic {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	flex: 0 570px;
+}
+div.show-productpic img {
+	display: block;
+	flex: 0 270px;
+	height: 270px;
+	margin-bottom: 30px;
+}
+div.show-productpic.big img {
+	flex: 0 370px;
+	height: 370px;
+}
+/* разметка: БЛОКИ ТЕКСТА;  по макету не вышло, подогнал опытным тыком */
+div.ascription.slider 				{ width: 470px; padding-top: 200px; }
+div.ascription.promo-product 		{ width: 260px; padding-top: 250px; padding-left: 50px; }
+div.ascription.hot-deals 			{ width: 530px; padding-top: 280px; }
+div.ascription.exclusive-products 	{ width: 333px; padding-top: 185px; padding-left: 30px; }
+div.ascription.mobile-app 			{ width: 600px; padding-top: 125px; }
+
+
+/*  С О Д Е Р Ж И М О Е  */
+h1.slender, h2.slender {
+	font-size: 62px;
+	font-weight: 100;
+	text-transform: uppercase;
+	letter-spacing: -3px;
+	margin: 10px 8px;
+}
+h2.section-white-head {
+	margin-bottom: 50px;
+}
+h2, button.place {
+	font-size: 36px;
+	font-weight: 700;
+}
+
+/* содержимое: ПРИПИСАННЫЕ блоки текста */
+p.miniHead {
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+p.miniHead.slider 				{ color: #43a047; }
+p.miniHead.promo-product,
+p.miniHead.exclusive-products 	{ color: #1e88e5; }
+p.miniHead.hot-deals 			{ color: #e53935; }
+p.miniHead.mobile-app 			{ color: #6c6c6c; }
+
+p.briefDescription {
+	color: #6c6c6c;
+	font-size: 14px;
+	font-weight: 400;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	line-height: 24px;
+	height: 45px;
+	overflow: hidden;
+}
+p.briefDescription.mobile-app { font-size: 22px; }
+
+/* содержимое: ССЫЛКИ */
+.place {
+	display: inline-block;
+	background-color: inherit;
+	border: none;
+	border-bottom: 3px solid transparent;
+	color: #8c8c8c;
+}
+a.place {
+	padding: 5px 15px 10px;
+}
+button.place {
+	padding: 0 20px 20px 10px;
+}
+.place.active {
+	border-bottom: 3px solid #212121;
+	color: inherit;
+}
+.place:hover, .reference-explore:hover {
+	border-bottom: 2px solid #6c6c6c;
+	color: inherit;
+}
+.place.active:hover {
+	border-bottom: 3px solid #212121;
+}
+
+button.order-button {
+	border-radius: 30px/25px;
+	box-shadow: 0 2px 5px 1px rgba(33,33,33,0.35);
+	background-color: #fff;
+	padding: 12px 28px;
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 3.6px;
+}
+button.order-button:hover {
+	cursor: pointer;
+	color: #fff;
+	background-color: #212121;
+}
+
+a.reference-explore {
+	float: right;
+	margin-top: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 18px;
+	letter-spacing: 3.6px;
+}
+
+/*  содержимое: "Ш А П К А"  */
+header {
+	padding-top: 62px;
+}
+nav {
+	float: right;
+	display: flex;
+	flex-direction: row;
+	justify-content: right;
+	align-items: center;
+}
+nav li {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+button.search {
+	border: none;
+	background-color: inherit;
+}
+input#searchInput {
+	display: none;
+	/*padding: 5px;
+}
+input#searchInput:focus, img.search:hover input#searchInput {
+	display: auto;*/
+}
+label.search {
+	/*cursor: pointer;*/
+	display: inline-block;
+}
+
+/* содержимое: шапка: СЛАЙДЫ */
+div.pagination {
+	position: absolute;
+	width: 1170px;
+	bottom: 19px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+button.pagination {
+	flex-grow: 0;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background-color: #c7c7c7;
+	border-radius: 50%;
+	margin: 5px;
+	border: none;
+}
+button.pagination.active {
+	width: 40px;
+	height: 40px;
+	background-color: #212121;
+}
+button.pagination:hover {
+	background-color: #212121;
+}
+
+
+/*  П О Д В А Л  */
+footer {
+	height: 385px;
+	background-color: #f7f7f7;
+	font-weight: 700;
+}
+
+ul.info {
+	display: flex;
+	justify-content: space-between;
+}
+li.info:first-child		{ flex: 0 230px; }
+li.info:nth-child(2)	{ flex: 0 430px; }
+li.info:last-child		{ flex: 0 370px; }
+div.info  {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 12px;
+	color: #6c6c6c;
+}
+h3.info {
+	color: #6c6c6c;
+	text-transform: uppercase;
+	font-size: 18px;
+	letter-spacing: 2px;
+	padding-bottom: 25px;
+}
+
+li.info p {
+	padding-bottom: 25px;
+	line-height: 1.5em;
+	font-weight: 400;
+	position: relative;
+}
+
+ul.hreferences {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+ul.hreferences li {
+	flex: 0 210px;
+	height: 1.5em;
+	margin-bottom: 7px;
+	font-size: 14px;
+}
+
+input[name="guestEmail"] {
+	box-sizing: border-box;
+	width: 100%;
+	height: 50px;
+	font-size: 14px;
+	padding: 18px 50px 18px 20px;
+}
+img.guestEmail {
+	width: 21px;
+	height: 17px;
+	position: absolute;
+	margin: 17px 0 15px -35px;
+	font-size: 12px;
+	font-weight: 100;
+}
+
+footer a, footer span {
+	border-bottom: 2px solid transparent;
+	text-transform: uppercase;
+}
+footer a:hover {
+	border-bottom: 2px solid #6c6c6c;
+}
+ul.hreferences-socmedia {
+	font-size: 11px;
+	font-weight: 100;
+}

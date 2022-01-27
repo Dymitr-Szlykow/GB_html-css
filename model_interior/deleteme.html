@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>deleteme</title>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700">
+	<style type="text/css">
+		
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		.clearfix:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.padding-site {
+			padding-left: 98px;
+			padding-right: 98px;
+		}
+
+		div.container {
+			width: 1366px;
+			margin: 0 auto;
+		}
+
+		div.slider {
+			height: 800px;
+			background-image: url(img/slider-back.jpeg);
+			position: relative;
+		}
+
+		.header {
+			padding-top: 63px;
+		}
+
+		ul.menu {
+			float: right;
+		}
+
+		li.menu-list {
+			list-style-type: none;
+
+			float: left;
+		}
+
+		.menu-link {
+			color: #8c8c8c;
+			font-size: 14px;
+			font-weight: 300;
+			text-decoration: none;
+			text-transform: uppercase;
+
+			padding: 10px 13px;
+		}
+		.menu-link:hover {
+			color: #212121;
+		}
+		.menu-link-active {
+			color: #212121;
+			font-weight: 700;
+			letter-spacing: 1.4px;
+			border-bottom: 3px solid #212121;
+		}
+
+		div.slider-text {
+			margin-top: 283px;
+		}
+		p.slider-trending {
+			color: #43a047;
+			font-size: 18px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		h2.slider-h2 {
+			color: #212121;
+			font-size: 62px;
+			font-weight: 100;
+			text-transform: uppercase;
+		}
+		p.slider-content {
+			color: #6c6c6c;
+			font-size: 14px;
+			font-weight: 300;
+
+			width: 458px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			line-height: 24px;
+		}
+
+		a.button {
+			color: #212121;
+			font-size: 18px;
+			font-weight: 700;
+			text-transform: uppercase;
+			box-shadow: 0 2px 5px 1px rgba(33,33,33,0.35);
+			border-radius: 23px;
+			background-color: #fff;
+			width: 212px;
+			height: 45px;
+			text-align: center;
+			line-height: 45px;
+			display: inline-block;
+			text-decoration: none;
+			letter-spacing: 3.6px;
+		}
+
+		div.pagination {
+			position: absolute;
+			width: 1170px;
+			bottom: 19px;
+			text-align: center;
+		}
+		a.circle {
+			width: 30px;
+			height: 30px;
+			display: inline-block;
+			background-color: #c7c7c7;
+			border-radius: 50%;
+
+			margin: 5px;
+		}
+		a.circle-active {
+			width: 40px;
+			height: 40px;
+			background-color: #212121;
+
+			margin-bottom: 0;
+		}
+		a.circle:hover {
+			background-color: #212121;
+		}
+
+
+		/*  обучение: СЛАЙДЕР:  https://habr.com/ru/post/252075/  */
+
+		div.wrapper {
+			height: 350px;
+			margin: 100px auto 0;
+			position: relative;
+			width: 370px;
+		}
+		.wrapper > input {
+			display: none;
+		}
+
+		div.slider2 {
+			background-color: #ddd;
+			height: inherit;
+			overflow: hidden;
+			position: relative;
+			width: inherit;
+			box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+		}
+
+		.slides {
+			height: inherit;
+			position: absolute;
+			width: inherit;
+			opacity: 0;
+			z-index: 0;
+			transform: scale(1.5);
+			transition: transform ease-in-out .5s, opacity ease-in-out .5s;
+		}
+		.slide1 { background-image: url(img/trending-product-1.jpeg) }
+		.slide2 { background-image: url(img/trending-product-2.jpeg) }
+		.slide3 { background-image: url(img/trending-product-3.jpeg) }
+		.slide4 { background-image: url(img/trending-product-4.jpeg) }
+		.slide5 { background-image: url(img/trending-product-5.jpeg) }
+
+		#slide1:checked ~ .slider2 > .slide1,
+		#slide2:checked ~ .slider2 > .slide2,
+		#slide3:checked ~ .slider2 > .slide3,
+		#slide4:checked ~ .slider2 > .slide4,
+		#slide5:checked ~ .slider2 > .slide5 {
+			opacity: 1;
+			z-index: 1;
+			transform: scale(1);
+		}
+
+		.wrapper .controls {
+			position: absolute;
+			left: 50%;
+			margin-left: -98px;
+		}
+
+		.wrapper label {
+			display: inline-block;
+			position: relative;
+			width: 8px;
+			height: 8px;
+			margin: 25px 12px 0 16px;
+			border-radius: 50%;
+			cursor: pointer;
+			transition: background ease-in-out .5s;
+		}
+
+		.wrapper label:after {
+			border: 2px solid #ddd;
+			content: " ";
+			display: block;
+			height: 12px;
+			left: -4px;
+			position: absolute;
+			top: -4px;
+			width: 12px;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			-o-border-radius: 50%;
+			border-radius: 50%;
+		}
+		.wrapper label:hover, 
+		#slide1:checked ~ .controls label:nth-of-type(1),
+		#slide2:checked ~ .controls label:nth-of-type(2),
+		#slide3:checked ~ .controls label:nth-of-type(3),
+		#slide4:checked ~ .controls label:nth-of-type(4),
+		#slide5:checked ~ .controls label:nth-of-type(5) {
+			background: #ddd;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="slider padding-site">
+			<div class="header">
+				<a href="#"><img src="img/logo.svg" class="logo" alt="logo"></a>
+				<ul class="menu clearfix">
+					<li class="menu-list"><a href="#" class="menu-link menu-link-active">HOME</a></li>
+					<li class="menu-list"><a href="#" class="menu-link">PRODUCT</a></li>
+					<li class="menu-list"><a href="#" class="menu-link">HISTORY</a></li>
+					<li class="menu-list"><a href="#" class="menu-link">SHOWROOM</a></li>
+					<li class="menu-list"><a href="#" class="menu-link">CONTACT</a></li>
+					<li class="menu-list"><a href="#" class="menu-link"><img src="img/search.svg"></a></li>
+				</ul>
+			</div>
+
+			<div class="slider-text">
+				<p class="slider-trending">Trending</p>
+				<h2 class="slider-h2">Fishnet chair</h2>
+				<p class="slider-content">a line of text</p>
+				<a href="#" class="button">order us &gt;</a>
+			</div>
+
+			<div class="pagination">
+				<a href="#" class="circle"></a><!-- 
+			 --><a href="#" class="circle circle-active"></a><!-- 
+			 --><a href="#" class="circle"></a>
+			</div>
+		</div>
+
+		<div class="wrapper">
+			<input type="radio" name="point" id="slide1" checked>
+			<input type="radio" name="point" id="slide2">
+			<input type="radio" name="point" id="slide3">
+			<input type="radio" name="point" id="slide4">
+			<input type="radio" name="point" id="slide5">
+			<div class="slider2">
+				<div class="slides slide1"></div>
+				<div class="slides slide2"></div>
+				<div class="slides slide3"></div>
+				<div class="slides slide4"></div>
+				<div class="slides slide5"></div>
+			</div>	
+			<div class="controls">
+				<label for="slide1"></label>
+				<label for="slide2"></label>
+				<label for="slide3"></label>
+				<label for="slide4"></label>
+				<label for="slide5"></label>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
