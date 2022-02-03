@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HW | contacts</title>
+
+	<link rel="stylesheet" href="styles.css">
+	<script type="text/javascript" src="minors.js"></script>
+
+</head>
+
+<body>
+	<section class="supraheader"><div class="_container">
+		<header class="intro contacts">
+			<a href="index.html" class="nav home">home</a>
+			<span>i'm the header here!</span>
+			<label for="error-toggle" class="nav contacts">contacts</label>
+			<!--
+				<img class="logo"></img>
+				<nav>
+					<ul class="nav">
+						<li class="nav"><a class="nav">home</a></li>
+						<li class="nav"><a class="nav">about</a></li>
+						<li class="nav"><a class="nav">contacts</a></li>
+					</ul>
+				</nav>
+			-->
+
+			<input type="checkbox" class="_toggle" id="error-toggle"></input>
+			<div class="error-message">
+				<p class="error-message" lang="ru">Это самое...<br>Вы как бы уже здесь.</p>
+				<label for="error-toggle" class="error-message">принято</label>
+			</div>
+		</header>
+	</div></section>
+
+	<section class="header-prominent"><div class="_container header-prominent">
+		<h3 class="">contact us</h1>
+		<p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	</div></section>
+
+	<section class="contacts"><div class="_container _flex-container contacts">
+		<form class="send-us-message">
+			<h4>send us message</h3>
+			<p>full name<br><input type="text" name="guestName" placeholder="Your Name"></p>
+			<p>email<br><input type="email" name="guestEmail" placeholder="Your Email"></p>
+			<p>message<br><textarea name="gestMessage_Text" placeholder="Your Message" wrap="soft"></textarea></p>
+			<p><input type="submit" id="send-us-message-submit" value="submit"></p>
+		</form>
+
+		<img src="" alt="" class="contacts" id="contacts-img"></img>
+		<h4 class="contacts address">address</h4>
+		<p class="contacts address">Id convallis placerat sit sed duis id amet volutpat quam a, pharetra.</p>
+		<h4 class="contacts phone">phone</h4>
+		<ul class="contacts tel"><!--
+		 --><li>+62-812-7313-4321</li><!--
+		 --><li>+62-817-000-1234</li><!--
+	 --></ul>
+		<h4 class="contacts online-services">inline service</h4>
+		<ul class="contacts online-services"><!--
+		 --><li><a href="#">www.afrianska.com</a></li><!--
+		 --><li><a href="#">hello.afrian@gmail.com</a></li><!--
+	 --></ul>
+	</div></section>
+
+	<section class="map"><div class="_container">
+		<div class="mapholder">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1803.420235939463!2d101.54437033989593!3d25.30956332839869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1589662494779!5m2!1sru!2sru"
+				frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+		</div>
+	</div></section>
+
+	<section class="last"><div class="_container last">
+		<div class="prelast">
+			<div class="hello ">
+				<h3 class="last hello-header">interested to work with our team?</h3>
+				<p class="last hello-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+			<button class="lets-talk" id="lets-talk" onclick="setNext('lets-talk', refuses)">Let's talk</button>
+		</div>
+		<footer class="last">
+			<div class="footer-contacts">
+				<ul class="footer-contacts _flex-container"><!--
+				 --><li class="footer-contacts address">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><!--
+				 --><li class="footer-contacts tel">+62-812-7313-4321</li><!--
+				 --><li class="footer-contacts email">hello.afrian@gmail.com</li><!--
+			 --></ul>
+			</div>
+			<p class="rights">all rights reserved</p>
+		</footer>
+	</div></section>
+</body>
+</html>

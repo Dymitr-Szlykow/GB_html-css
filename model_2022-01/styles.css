@@ -3,37 +3,19 @@
 *,
 *::before,
 *::after {
+	/* отныне margin и padding обнулены, пока не укажу обратного;
+	   padding и border входят в width и height */
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
-
-body {
-	background:
-		linear-gradient(
-			to right,
-			rgba(0,0,0,.7) 0%,
-			rgba(0,0,0,.3) 5%,
-			rgba(0,0,0,.0) 25%,
-			rgba(0,0,0,.0) 75%,
-			rgba(0,0,0,.3) 95%,
-			rgba(0,0,0,.7) 100%
-			),
-		white;
-}
-
-a {
-	text-decoration: none;
-}
-
-p, li {
-	cursor: default;
-	list-style-type: none;
+	font-family: serif;
 }
 
 /* ш р и ф т ы */
 
 :root {
+	/* определяет "переменные" (custom properties) для селектора,
+	   данные значения будут видимы для всех его наследников */
 	--fs-h1: 2rem;
 	--fs-h3: 1.5rem;
 	--fs-h4: 1.125rem;
@@ -42,6 +24,7 @@ p, li {
 
 @media (min-width: 500px) {
 	:root {
+		/* переопределяет "переменные" если ширина экрана не меньше 500px */
 		--fs-h1: 3rem;
 		--fs-h3: 2.25rem;
 		--fs-h4: 1.25rem;
@@ -51,6 +34,7 @@ p, li {
 
 @media (min-width: 1000px) {
 	:root {
+		/* переопределяет "переменные" если ширина экрана не меньше 1000px */
 		--fs-h1: 3.5rem;
 		--fs-h3: 2.75rem;
 		--fs-h4: 1.50rem;
@@ -71,58 +55,119 @@ h4::first-letter {
 }
 
 
-h1     { font-size: var(--fs-h1) }
-h3     { font-size: var(--fs-h3) }
+/* назначает по всему документу размеры шрифтов,
+   определенные выше относительно ширины экрана */
+h1     { font-size: var(--fs-h1); }
+h3     { font-size: var(--fs-h3); }
 h4,
-header { font-size: var(--fs-h4) }
-p, li  { font-size: var(--fs-body) }
+header { font-size: var(--fs-h4); }
+textarea,
+p, li { font-size: var(--fs-body);
+	cursor: default;
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
 
 
 /* д л я  н а г л я д н о с т и - удалить / изменить */
 
 section.intro,
 section.last {
-	background-color: rgba(127,63,63,.2);
+	background-color: rgba(127,63,63,.1);
 }
 div._container.intro,
 div._container.last {
-	background-color: rgba(63,63,127,.4);
+	background-color: rgba(63,63,127,.2);
 }
 header.intro {
-	background-color: rgba(63,127,63,.7);
+	background-color: rgba(63,127,63,.2);
 }
 div.hello {
-	background-color: rgba(15,15,127,.3);
+	background-color: rgba(15,15,127,.1);
 }
-article {
+/*article {
 	background-color: rgba(190,127,15,.05);
-}
+}*/
 img.what-we-do {
 	background-color: rgba(0,0,0,.1);
 }
 
 /* о б щ е е */
 
+body {
+	/* тень по краям экрана */
+	background:
+		linear-gradient(
+			to right,
+			rgba(0,0,0,.4) 0%,
+			rgba(0,0,0,.2) 5%,
+			rgba(0,0,0,.0) 20%,
+			rgba(0,0,0,.0) 80%,
+			rgba(0,0,0,.2) 95%,
+			rgba(0,0,0,.4) 100%
+			),
+		#f0f0ff;
+}
+
 article {
 	margin: 3em 0;
 	min-height: 60vh;
 }
 
+input._toggle {
+	/* прячет input[type="checkbox"], тот активируется через label, см.index.html */
+	display: none;
+}
+
 ._container {
+	/* обеспечивает единое выравние по центру;
+	   position:relative устанавливает данные элементы как точки отсчета для наследников с position:absolute
+	   (position:absolute отсчитывается от верхнего левого угла ближайшего предка с position:relative,
+	   если такого нет - от body); */
 	max-width: 500px;
 	margin: 0 auto;
 	position: relative;
-	overflow: auto;
+}
+
+._container.intro,
+._container.last {
+	/* из-за какой-то нелепости margin-top первых элементов отображается неправильно, это - исправление */
+	overflow-y: auto;
 }
 
 ._flex-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	align-content: space-between;
+	column-gap: 2rem;
 }
 
 ._flex-container > * {
+	/* наводится на всех непосредственных детей ._flex-container */
 	flex: initial;
+}
+
+@media screen and (min-width: 500px) {
+
+	body {
+		/* тень по краям экрана */
+		background:
+			linear-gradient(
+				to right,
+				rgba(0,0,0,.5) 0%,
+				rgba(0,0,0,.3) 5%,
+				rgba(0,0,0,.0) 25%,
+				rgba(0,0,0,.0) 75%,
+				rgba(0,0,0,.3) 95%,
+				rgba(0,0,0,.5) 100%
+				),
+			#f0f0ff;
+	}
 }
 
 @media screen and (min-width: 1000px) {
@@ -144,9 +189,18 @@ div._container.intro {
 	min-height: 100vh;
 }
 
-header.intro {
+header {
 	margin: 7vh 0;
 	padding: 1em 2rem;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+header span {
+	color: rgba(63,63,63,.3);
+}
+header.intro.contacts {
+	margin: 0;
 }
 
 div.hello {
@@ -178,6 +232,80 @@ p.hello-text {
 	}
 }
 
+/* ш а п к а  - header / nav */
+
+.nav {
+	cursor: pointer;
+	color: #333;
+	transition:
+		color .2s .1s ease-in-out,
+		text-shadow .4s ease-in-out;
+}
+.nav:hover {
+	color: #ccc;
+	text-shadow:
+		0 0 .5em rgb(180,90,90),
+		0 0 .2em rgb(180,70,70),
+		0 0 .1em rgb(0,0,0);
+}
+
+div.error-message {
+	/* position:absolute вырывает элемент из общего потока (остальные строятся, будто этого элемента нет),
+	   отсчитывается от верхнего левого угла ближайшего предка с position:relative;
+	   z-index позволяет отображатся поверх элементов, встречающихся выше в дереве html-документа */
+	width: 350px;
+	position: absolute;
+	top: 20vh;
+	left: calc(50% - 175px);
+	border-radius: 1em;
+	padding: 2em;
+	z-index: 1;
+	background-color: rgba(90,127,90,.85);
+	color: #eee;
+	text-align: center;
+	display: none;
+	text-shadow:
+		0 0 .1em rgba(0,0,0,.9),
+		0 0 .5em rgba(0,0,0,.7);
+}
+p.error-message {
+	margin: 1em;
+	padding: .2em;
+	border-radius: 2em / 50%;
+	background-color: rgb(90,127,90);
+	box-shadow:
+		0 0 .1em rgb(90,127,90),
+		0 0 .5em rgb(90,127,90),
+		0 0 1em rgb(90,127,90);
+}
+label.error-message {
+	margin: 2em;
+	padding: .4em 1em .55em;
+	border: 1px solid #212121;
+	border-radius: 1em / 50%;
+	font-size: 1.2rem;
+	letter-spacing: 1px;
+	background-color: rgb(90,127,90);
+	transition:
+		color .5s ease-in-out,
+		background-color .5s ease-in-out,
+		text-shadow .5s ease-in-out;
+}
+label.error-message:hover {
+	color: rgb(90,127,90);
+	background-color: #eee;
+	text-shadow: none;
+}
+label.error-message:active {
+	background-color: #212121;
+}
+
+input#error-toggle:checked ~ div.error-message {
+	/* '~'' указывает на СЛЕДУЮЩИЕ элементы в ТОМ ЖЕ родителе;
+	   делает видимым div.error-message, когда checkbox включен */
+	display: block;
+}
+
 /* р а з д е л  2 - с о д е р ж и м о е */
 
 .article-header {
@@ -199,14 +327,19 @@ p.subtitle {
 	}
 }
 
-/* р а з д е л  2  ч а с т ь  1  - "what we do..." */
+/* с о д е р ж и м о е (home) - "what we do..." */
 
 div._flex-container.what-we-do > * {
 	width: 90%;
-	border: 1px solid #555;
 	padding: 2em 1em;
 	margin: 1em auto;
+	border-radius: .5em;
 	background-color: #eee;
+	box-shadow: 0 0 .5em rgba(50,50,70,.5);
+	transition: box-shadow .2s linear;
+}
+div._flex-container.what-we-do > :hover {
+	box-shadow: .1em .2em 1.2em rgba(50,50,90,.5);
 }
 
 img.what-we-do {
@@ -223,12 +356,32 @@ p.what-we-do {
 
 a.learn-more {
 	display: inline-block;
+	color: darkblue;
 }
 
 a.learn-more::after {
+	/* content: "" обязателен, чтобы псевдоэлементы ::before и ::after отображались;
+	   благодаря display:block и background-color отображаются как видимые блоки с заданными width и height;
+	   transform:scale(0) сжимает до 0% (см. ниже) */
 	content: "";
-	/*background-image: url("img/"); TODO: вставить стрелку картинкой*/
-	display: inline-block;
+	display: block;
+	position: relative;
+	left: -10%;
+	height: .2em;
+	width: 120%;
+	border-radius: 50%;
+	color: darkblue;
+	background-color: darkblue;
+	transform: scale(0);
+	transform-origin: center;
+	transition: transform .3s ease-in-out;
+}
+
+a.learn-more:hover::after {
+	/* a.learn-more:hover::after - применяется на псевдоэлемент ::after элемента a.learn-more, над последним курсор;
+	   меняет сжатие размера с 0% (см.выше) до 100%;
+	   transition: transform .3s ease-in-out (см.выше) обеспечивает изменение свойства transform в течение 0,3 сек */
+	transform: scale(1);
 }
 
 @media screen and (min-width: 500px) {
@@ -248,17 +401,55 @@ a.learn-more::after {
 	}
 }
 
-/* р а з д е л  2  ч а с т ь  2  - finished projects */
+/* с о д е р ж и м о е (home) - "finished projects" */
 
-div.app {
-	min-height: 300px;
+div.app-wrap {
 	width: 100%;
-	background-color: rgba(63,63,63,.5);
-	-webkit-border-radius: 1.5em;
-	-moz-border-radius: 1.5em;
-	border-radius: 1em;
-	padding: 1em 1.5em;
 	margin: 1rem 0;
+	position: relative;
+}
+
+div.app-present {
+	/* псевдоэлементы ::before и ::after считаются содержимым своего элемента (div.app-wrap)
+	   и при display:block с position:absolute отражаются поверх остального содержимого;
+	   поэтому остальное содержимое положено в div.app-present с index-z:1 (работает при position:relative); */
+	width: 100%;
+	min-height: 300px;
+	padding: 1em 1.5em;
+	border-radius: 1em;
+	position: relative;
+	z-index: 1;
+	background-color: #aaa;
+	transition:
+		transform .4s ease-in-out,
+		box-shadow .4s ease-in-out;
+}
+
+div.app-wrap::before,
+div.app-wrap::after {
+	content: '';
+	display: block;
+	border-radius: 1em;
+	background-color: rgba(127,127,127,.6);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transition:
+		transform .4s ease-in-out,
+		box-shadow .4s ease-in-out;
+}
+
+div.app-wrap:hover > div.app-present {
+	transform: translate(-1em, .5em);
+	box-shadow: 0.5em 0.5em .5em rgba(0,0,0,.4);
+}
+div.app-wrap:hover:before {
+	box-shadow: 0 .25em .5em rgba(0,0,0,.4);
+}
+div.app-wrap:hover::after {
+	transform: translate(1em, -0.5em);
 }
 
 div.sparklite      { /*background-image: url("img/_");*/ }
@@ -268,7 +459,9 @@ div.smart-home     { /*background-image: url("img/_");*/ }
 
 @media screen and (min-width: 500px) {
 
-	div.app {
+	div.app-present,
+	div.app-wrap::before,
+	div.app-wrap::after {
 		padding: 2em 3em;
 		border-radius: 1.5em;
 	}
@@ -276,9 +469,15 @@ div.smart-home     { /*background-image: url("img/_");*/ }
 
 @media screen and (min-width: 1000px) {
 
-	div.sparklite,
-	div.car-repetition {
-		width: 48%;
+	div.app-wrap {
+		/* начальный размер позволяет вместить два элемента, равноменое изменение размеров при подгонке под контейнер
+		   https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Controlling_Ratios_of_Flex_Items_Along_the_Main_Ax */
+		flex: 1 1 40%; /* <flex-grow> <flex-shrink> <flex-basis> */
+	}
+
+	div.app-wrap:first-of-type {
+		/* начальный размер первого элемента - вся ширина */
+		flex-basis: 100%;
 	}
 
 	div.smart-home {
@@ -286,20 +485,177 @@ div.smart-home     { /*background-image: url("img/_");*/ }
 	}
 }
 
+/* с о д е р ж и м о е (contacts) */
+
+section.header-prominent {
+	background-color: rgba(63,127,190,.3);
+}
+
+div.header-prominent {
+	padding: .9em 1.5em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+._flex-container.contacts {
+	flex-direction: column;
+	/*align-content: space-between;*/
+	margin: 2em auto;
+	gap: 2rem;
+}
+
+._flex-container.contacts > * {
+	width: 90%;
+}
+._flex-container.contacts > :first-child {
+	padding: 2.5em 2em;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	border-radius: .5rem;
+	background-color: #eee;
+	box-shadow: 0 0 .5em rgba(50,50,70,.5);
+}
+
+.send-us-message p {
+	line-height: 2.5em;
+	font-size: var(--fs-h4);
+}
+
+.send-us-message input {
+	width: 100%;
+	padding: 1rem 2rem;
+	font-size: var(--fs-body);
+	border: 2px solid rgb(175,200,220);
+	border-radius: .5rem;
+}
+
+.send-us-message textarea {
+	width: 100%;
+	min-height: 200px;
+	padding: 1rem 1.5rem;
+	font-size: var(--fs-body);
+	border: 2px solid rgb(175,200,220);
+	border-radius: .5rem;
+	resize: none;
+	cursor: auto;
+}
+
+input#send-us-message-submit {
+	color: white;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	background-color: rgb(90,150,210);
+	border: 0;
+	border-radius: .7em;
+	box-shadow: .25em .5em 1em rgba(90,150,210,.5);
+	transition:
+		box-shadow .1s linear,
+		text-shadow .2s ease-in-out;
+	cursor: pointer;
+}
+input#send-us-message-submit:hover {
+	color: rgb(150,90,210);
+	outline: 2px solid rgba(150,90,210,.5);
+	outline-offset: -2px;
+	text-shadow:
+		0 0 1em white,
+		0 0 .5em white,
+		0 0 .1em white;
+}
+input#send-us-message-submit:active {
+	box-shadow: 0 0 1em rgb(90,150,210,.3);
+}
+
+img#contacts-img {
+	display: block;
+	height: 150px;
+	width: max-content;
+	align-self: center;
+	flex: initial;
+}
+
+@media screen and (min-width: 1000px) {
+
+	._flex-container.contacts {
+		flex-flow: column wrap-reverse;
+		justify-content: space-evenly;
+		align-items: flex-end;
+		align-content: space-between;
+		height: 700px;
+		margin: 2em auto;
+		gap: 1rem;
+	}
+
+	._flex-container.contacts > * {
+		flex: 0 0 auto;
+		max-width: 30%;
+	}
+
+	._flex-container.contacts > :first-child {
+		flex: 1 1 100%;
+		align-self: stretch;
+		max-width: unset;
+		width: 55%;
+		padding: 2.5em 2em;
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: stretch;
+		border-radius: .5rem;
+		background-color: #eee;
+		box-shadow: 0 0 .5em rgba(50,50,70,.5);
+	}
+}
+
+/* с о д е р ж и м о е (contacts) */
+
+.mapholder {
+	padding: .5em 0 3em;
+	height: 500px;
+}
+
+.mapholder > iframe {
+	width: 100%;
+	height: 100%;
+	padding: 1px;
+	box-shadow: 0 0 .4em rgba(50,50,70,.5);
+}
+
+@media screen and (min-width: 1000px) {
+	
+	.mapholder {
+		padding: 3em;
+		height: 500px;
+	}
+
+	.mapholder > iframe {
+		border-radius: 3px;
+		padding: 2px;
+		box-shadow: 0 0 .4em rgba(50,50,70,.5);
+	}
+}
+
 /* р а з д е л  3 - п о д в а л */
 
 button.lets-talk {
 	display: block;
-	height: 4em;
-	width: 150px;
-	margin: 1em auto;
+	min-height: 4em;
+	width: 200px;
+	margin: -3em auto 1em;
+	padding: .5em 1em;
+	opacity: .8;
 	font-size: var(--fs-body);
+	font-weight: bold;
 	background-color: lightblue;
-	color: white;
+	color: #333;
 }
 
 /* вместо <hr> */
 div.prelast::after {
+	/* content: "" обязателен, чтобы псевдоэлементы ::before и ::after отображались;
+	   благодаря display:block и background-color отображаются как видимые блоки с заданными width и height; */
 	content: "";
 	display: block;
 	width: 90%;
@@ -309,16 +665,16 @@ div.prelast::after {
 	opacity: .5;
 }
 
-li.contacts {
+li.footer-contacts {
 	width: 80%;
 	padding: 0 1.2em;
 	margin: .5em auto;
 	text-indent: -1.2em;
 }
 
-li.contacts.address::before { content: "A. "; }
-li.contacts.tel::before    { content: "T. "; }
-li.contacts.email::before  { content: "E. "; }
+li.footer-contacts.address::before { content: "A. "; }
+li.footer-contacts.tel::before    { content: "T. "; }
+li.footer-contacts.email::before  { content: "E. "; }
 
 p.rights {
 	margin: 2em 0;
@@ -328,11 +684,7 @@ p.rights {
 @media screen and (min-width: 500px) {
 
 	button.lets-talk {
-		width: 25%;
-		margin: 0;
-		position: absolute;
-		right: 0;
-		top: 23%;
+		min-width: 25%;
 	}
 }
 
@@ -340,10 +692,13 @@ p.rights {
 
 	button.lets-talk {
 		width: 20%;
-		top: 25%;
+		margin: 0;
+		position: absolute;
+		right: 0;
+		top: 30%;
 	}
 
-	li.contacts {
+	li.footer-contacts {
 		width: 25%;
 		margin: 0 1em;
 }

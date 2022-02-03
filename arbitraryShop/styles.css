@@ -149,7 +149,8 @@ section.catalog {
 	background-color: #eaf0fa;
 	padding: 5px 70px;
 	border: 1px solid #d0d0d0;
-	border-left: none; border-right: none;
+	border-left: none;
+	border-right: none;
 	margin: auto 15px;
 	clear: both;
 }

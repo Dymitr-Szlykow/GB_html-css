@@ -3,15 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>HW</title>
+	<title>HW | home</title>
 
 	<link rel="stylesheet" href="styles.css">
+	<script type="text/javascript" src="minors.js"></script>
+
 </head>
 
 <body>
+	<!-- section обеспечивает фон на всю ширину экрана, ._container задает единую ширину содержимому, см. CSS -->
 	<section class="intro"><div class="_container intro">
 		<header class="intro">
-			i'm the header here!
+			<label for="error-toggle" class="nav home">home</label>
+			<span>i'm the header here!</span>
+			<a href="contacts.html" class="nav contacts">contacts</a>
 			<!--
 				<img class="logo"></img>
 				<nav>
@@ -22,6 +27,14 @@
 					</ul>
 				</nav>
 			-->
+
+			<!-- невидимый input[type="checkbox"] включается через label[for="error-toggle"],
+			     должен обязательно идти перед div, на который влияет, см. (input#error-toggle:checked ~ div.error-message) в CSS -->
+			<input type="checkbox" class="_toggle" id="error-toggle"></input>
+			<div class="error-message" id="popup">
+				<p class="error-message" lang="ru">Это самое...<br>Вы как бы уже здесь.</p>
+				<label for="error-toggle" class="error-message">принято</label>
+			</div>
 		</header>
 
 		<div class="hello">
@@ -30,7 +43,7 @@
 		</div>
 	</div></section>
 
-	<section class="content"><div class="_container">
+	<section class="content"><div class="_container content">
 		<article class="what-we-do">
 			<h3 class="article-header article-title what-we-do content">what we do to help our clients grow in the digital era</h3>
 			<div class="what-we-do _flex-container">
@@ -63,18 +76,19 @@
 				<p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
 
-			<div class="_flex-container">
-				<div class="app smart-home">
+			<div class="_flex-container finished-proj">
+				<!-- вложенный div.app-present нужен, чтобы содержимое не перекрывали псевдоэлементы div.app-wrap::before и div.app-wrap::after, см. CSS -->
+				<div class="app-wrap"><div class="app-present smart-home">
 					<h4 class="content">smart home installation</h4>
-				</div>
+				</div></div>
 
-				<div class="app sparklite">
+				<div class="app-wrap"><div class="app-present sparklite">
 					<h4 class="content">sparklite app</h4>
-				</div>
+				</div></div>
 
-				<div class="app car-repetition">
+				<div class="app-wrap"><div class="app-present car-repetition">
 					<h4 class="content">car-repetition app</h4>
-				</div>
+				</div></div>
 			</div>
 		</article>
 	</div></section>
@@ -85,15 +99,15 @@
 				<h3 class="last hello-header">interested to work with our team?</h3>
 				<p class="last hello-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
-			<button class="lets-talk">Let's talk</button>
+			<button class="lets-talk" id="lets-talk" onclick="setNext('lets-talk', refuses)">Let's talk</button>
 		</div>
 		<footer class="last">
-			<div class="contacts">
-				<ul class="contacts _flex-container">
-					<li class="contacts address">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><!--
-				 --><li class="contacts tel">+62-812-7313-4321</li><!--
-				 --><li class="contacts email">hello.afrian@gmail.com</li>
-				</ul>
+			<div class="footer-contacts">
+				<ul class="footer-contacts _flex-container"><!--
+				 --><li class="footer-contacts address">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><!--
+				 --><li class="footer-contacts tel">+62-812-7313-4321</li><!--
+				 --><li class="footer-contacts email">hello.afrian@gmail.com</li><!--
+			 --></ul>
 			</div>
 			<p class="rights">all rights reserved</p>
 		</footer>
