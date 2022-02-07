@@ -4,42 +4,30 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>HW | home</title>
-
 	<link rel="stylesheet" href="styles.css">
-	<script type="text/javascript" src="minors.js"></script>
 
 </head>
 
 <body>
 	<!-- section обеспечивает фон на всю ширину экрана, ._container задает единую ширину содержимому, см. CSS -->
-	<section class="intro"><div class="_container intro">
+	<section class="home-start"><div class="_container home-start">
 		<header class="intro">
-			<label for="error-toggle" class="nav home">home</label>
-			<span>i'm the header here!</span>
-			<a href="contacts.html" class="nav contacts">contacts</a>
-			<!--
-				<img class="logo"></img>
-				<nav>
-					<ul class="nav">
-						<li class="nav"><a class="nav">home</a></li>
-						<li class="nav"><a class="nav">about</a></li>
-						<li class="nav"><a class="nav">contacts</a></li>
-					</ul>
-				</nav>
-			-->
+			<label for="error-toggle" class="nav home"><img src="img/icon_logo.svg"></label>
+			<a href="contacts.html" class="nav contacts"><img src="img/icon_book.svg"></a>
 
 			<!-- невидимый input[type="checkbox"] включается через label[for="error-toggle"],
 			     должен обязательно идти перед div, на который влияет, см. (input#error-toggle:checked ~ div.error-message) в CSS -->
 			<input type="checkbox" class="_toggle" id="error-toggle"></input>
 			<div class="error-message" id="popup">
 				<p class="error-message" lang="ru">Это самое...<br>Вы как бы уже здесь.</p>
-				<label for="error-toggle" class="error-message">принято</label>
+				<label for="error-toggle" class="error-message blue-btn">принято</label>
 			</div>
 		</header>
 
 		<div class="hello">
 			<h1 class="hello-header">new automation tool for you</h1>
 			<p class="hello-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<a href="#" class="hello blue-btn">See our project</a>
 		</div>
 	</div></section>
 
@@ -48,21 +36,21 @@
 			<h3 class="article-header article-title what-we-do content">what we do to help our clients grow in the digital era</h3>
 			<div class="what-we-do _flex-container">
 				<div>
-					<img src="" alt="" class="what-we-do">
+					<img src="img/card1.png" alt="" class="what-we-do card-img1">
 					<h4 class="content what-we-do">make your business more famous on the internet</h4>
 					<p class="what-we-do">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					<a href="#" class="learn-more">learn more</a>
 				</div>
 
 				<div>
-					<img src="" alt="" class="what-we-do">
+					<img src="img/card2.png" alt="" class="what-we-do card-img2">
 					<h4 class="content what-we-do">bring technology to your comfortable home</h4>
 					<p class="what-we-do">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					<a href="#" class="learn-more">learn more</a>
 				</div>
 
 				<div>
-					<img src="" alt="" class="what-we-do">
+					<img src="img/card3.png" alt="" class="what-we-do card-img3">
 					<h4 class="content what-we-do">build your digital product that is suitable for your needs</h4>
 					<p class="what-we-do">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 					<a href="#" class="learn-more">learn more</a>
@@ -99,7 +87,7 @@
 				<h3 class="last hello-header">interested to work with our team?</h3>
 				<p class="last hello-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
-			<button class="lets-talk" id="lets-talk" onclick="setNext('lets-talk', refuses)">Let's talk</button>
+			<button class="blue-btn lets-talk" id="lets-talk">Let's talk</button>
 		</div>
 		<footer class="last">
 			<div class="footer-contacts">
@@ -113,5 +101,6 @@
 		</footer>
 	</div></section>
 	
+	<script type="text/javascript" src="minors.js"></script>
 </body>
 </html>

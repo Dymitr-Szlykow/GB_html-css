@@ -5,6 +5,12 @@ const refuses =
 	"может поговорим... )"];
 var refuses_index = -1;
 
-function setNext(id, collection) {
-	document.getElementById(id).innerHTML = collection[refuses_index = ++refuses_index % collection.length];
-}
+// function setNext(id, collection) {
+// 	document.getElementById(id).innerHTML = collection[refuses_index = ++refuses_index % collection.length];
+// }
+
+const btn_letstalk = document.getElementById('lets-talk');
+
+btn_letstalk.addEventListener('click', () => {
+	btn_letstalk.innerHTML = refuses[refuses_index = ++refuses_index % refuses.length]
+})

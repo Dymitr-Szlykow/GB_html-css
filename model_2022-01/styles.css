@@ -8,10 +8,13 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: serif;
+	font-family: Roboto, serif;
 }
 
-/* ш р и ф т ы */
+:focus {
+	outline: none;
+}
+
 
 :root {
 	/* определяет "переменные" (custom properties) для селектора,
@@ -42,18 +45,17 @@
 	}
 }
 
+
 h1, h3, h4 {
 	line-height: 1;
 	text-transform: lowercase;
 	cursor: default;
 }
-
 h1::first-letter,
 h3::first-letter,
 h4::first-letter {
 	text-transform: uppercase;
 }
-
 
 /* назначает по всему документу размеры шрифтов,
    определенные выше относительно ширины экрана */
@@ -67,76 +69,15 @@ p, li { font-size: var(--fs-body);
 	list-style-type: none;
 }
 
+
 a {
 	text-decoration: none;
 	color: inherit;
 }
 
-
-/* д л я  н а г л я д н о с т и - удалить / изменить */
-
-section.intro,
-section.last {
-	background-color: rgba(127,63,63,.1);
-}
-div._container.intro,
-div._container.last {
-	background-color: rgba(63,63,127,.2);
-}
-header.intro {
-	background-color: rgba(63,127,63,.2);
-}
-div.hello {
-	background-color: rgba(15,15,127,.1);
-}
-/*article {
-	background-color: rgba(190,127,15,.05);
-}*/
-img.what-we-do {
-	background-color: rgba(0,0,0,.1);
-}
-
-/* о б щ е е */
-
-body {
-	/* тень по краям экрана */
-	background:
-		linear-gradient(
-			to right,
-			rgba(0,0,0,.4) 0%,
-			rgba(0,0,0,.2) 5%,
-			rgba(0,0,0,.0) 20%,
-			rgba(0,0,0,.0) 80%,
-			rgba(0,0,0,.2) 95%,
-			rgba(0,0,0,.4) 100%
-			),
-		#f0f0ff;
-}
-
-article {
-	margin: 3em 0;
-	min-height: 60vh;
-}
-
 input._toggle {
 	/* прячет input[type="checkbox"], тот активируется через label, см.index.html */
 	display: none;
-}
-
-._container {
-	/* обеспечивает единое выравние по центру;
-	   position:relative устанавливает данные элементы как точки отсчета для наследников с position:absolute
-	   (position:absolute отсчитывается от верхнего левого угла ближайшего предка с position:relative,
-	   если такого нет - от body); */
-	max-width: 500px;
-	margin: 0 auto;
-	position: relative;
-}
-
-._container.intro,
-._container.last {
-	/* из-за какой-то нелепости margin-top первых элементов отображается неправильно, это - исправление */
-	overflow-y: auto;
 }
 
 ._flex-container {
@@ -152,10 +93,71 @@ input._toggle {
 	flex: initial;
 }
 
-@media screen and (min-width: 500px) {
+/* о б щ е е */
+
+body {
+	/* тень по краям экрана */
+	/*background:
+		linear-gradient(
+			to right,
+			rgba(0,0,0,.4) 0%,
+			rgba(0,0,0,.2) 5%,
+			rgba(0,0,0,.0) 20%,
+			rgba(0,0,0,.0) 80%,
+			rgba(0,0,0,.2) 95%,
+			rgba(0,0,0,.4) 100%
+			),
+		#f0f0ff;*/
+}
+
+section.home-start {
+	background: linear-gradient(0deg, #ebf3fb 8%, rgba(152,195,232,0) 31%);
+	overflow-y: auto;
+}
+section.home-start + * {
+	background: linear-gradient(180deg, #ebf3fb 1%, rgba(152,195,232,0) 5%);
+}
+
+section.last {
+	background: #316099;
+	overflow-y: auto;
+}
+
+._container {
+	/* обеспечивает единое выравние по центру;
+	   position:relative устанавливает данные элементы как точки отсчета для наследников с position:absolute
+	   (position:absolute отсчитывается от верхнего левого угла ближайшего предка с position:relative,
+	   если такого нет - от body); */
+	max-width: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+
+._container.home-start {
+	/* из-за какой-то нелепости margin-top первых элементов отображается неправильно, overflow-y:auto - исправление */
+	min-height: 100vh;
+	padding-top: 2rem;
+	background-image: url('img/home-start_bg.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
+._container.last {
+	overflow-y: auto;
+	color: white;
+	/*background-color: #316099;*/
+}
+
+article {
+	margin: 0 auto;
+	padding: 2em 0;
+}
+
+/*@media screen and (min-width: 500px) {
 
 	body {
-		/* тень по краям экрана */
+		/* тень по краям экрана *
 		background:
 			linear-gradient(
 				to right,
@@ -168,12 +170,17 @@ input._toggle {
 				),
 			#f0f0ff;
 	}
-}
+}*/
 
 @media screen and (min-width: 1000px) {
 
 	._container {
 		max-width: 1000px;
+	}
+
+	._container.home-start {
+		background-size: unset;
+		background-position: right center;
 	}
 
 	._flex-container {
@@ -185,13 +192,8 @@ input._toggle {
 
 /* р а з д е л  1 - ш а п к а */
 
-div._container.intro {
-	min-height: 100vh;
-}
-
 header {
-	margin: 7vh 0;
-	padding: 1em 2rem;
+	padding: 1em 0;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -208,7 +210,7 @@ div.hello {
 	min-width: 300px;
 	/*max-height: 60vh;*/
 	margin: 10vh 0;
-	padding: 1rem 2rem 1rem 2rem;
+	padding: 1rem 0;
 
 	-webkit-border-top-right-radius: 1em;
 	-webkit-border-bottom-right-radius: 1em;
@@ -228,7 +230,7 @@ p.hello-text {
 
 	div.hello {
 		width: 50%;
-		padding: 1.5rem 4rem 1.5rem 2rem;
+		padding: 1.5rem 2rem 1.5rem 0;
 	}
 }
 
@@ -237,16 +239,52 @@ p.hello-text {
 .nav {
 	cursor: pointer;
 	color: #333;
+	position: relative;
+}
+.nav > * {
+	height: 100%;
+}
+
+.nav.home::after {
+	content: ' home';
+	/*display: inline-block;*/
+	position: absolute;
+	left: 130%;
+	top: 20%;
+	color: #222;
+	font-size: 1.75rem;
+	opacity: 0;
 	transition:
 		color .2s .1s ease-in-out,
-		text-shadow .4s ease-in-out;
+		text-shadow .4s ease-in-out,
+		opacity .2s ease-in-out;
 }
-.nav:hover {
-	color: #ccc;
+.nav.contacts::before {
+	content: 'contacts ';
+	/*display: inline-block;*/
+	position: absolute;
+	right: 130%;
+	top: 20%;
+	color: #222;
+	font-size: 1.75rem;
+	opacity: 0;
+	transition:
+		color .2s .1s ease-in-out,
+		text-shadow .4s ease-in-out,
+		opacity .2s ease-in-out;
+}
+
+.nav.home:is(:hover, :focus)::after {
+	opacity: 0.8;
 	text-shadow:
-		0 0 .5em rgb(180,90,90),
-		0 0 .2em rgb(180,70,70),
-		0 0 .1em rgb(0,0,0);
+		0 0 .5em rgb(152,195,232),
+		0 0 .1em rgb(152,195,232);
+}
+.nav.contacts:is(:hover, :focus)::before {
+	opacity: 0.8;
+	text-shadow:
+		0 0 .5em rgb(152,195,232),
+		0 0 .1em rgb(152,195,232);
 }
 
 div.error-message {
@@ -260,38 +298,25 @@ div.error-message {
 	border-radius: 1em;
 	padding: 2em;
 	z-index: 1;
-	background-color: rgba(90,127,90,.85);
-	color: #eee;
+	background-color: #ccc;
+	color: #222;
+	opacity: .95;
 	text-align: center;
 	display: none;
-	text-shadow:
-		0 0 .1em rgba(0,0,0,.9),
-		0 0 .5em rgba(0,0,0,.7);
 }
 p.error-message {
 	margin: 1em;
 	padding: .2em;
 	border-radius: 2em / 50%;
-	background-color: rgb(90,127,90);
-	box-shadow:
-		0 0 .1em rgb(90,127,90),
-		0 0 .5em rgb(90,127,90),
-		0 0 1em rgb(90,127,90);
 }
 label.error-message {
 	margin: 2em;
-	padding: .4em 1em .55em;
-	border: 1px solid #212121;
-	border-radius: 1em / 50%;
 	font-size: 1.2rem;
 	letter-spacing: 1px;
-	background-color: rgb(90,127,90);
-	transition:
-		color .5s ease-in-out,
-		background-color .5s ease-in-out,
-		text-shadow .5s ease-in-out;
+	/*background-color: rgb(90,127,90);*/
+	opacity: .9;
 }
-label.error-message:hover {
+label.error-message:is(:hover, :focus) {
 	color: rgb(90,127,90);
 	background-color: #eee;
 	text-shadow: none;
@@ -309,21 +334,23 @@ input#error-toggle:checked ~ div.error-message {
 /* р а з д е л  2 - с о д е р ж и м о е */
 
 .article-header {
-	border: 2px solid #333;
+	/*border: 2px solid #333;*/
 	padding: .9em 1.5em;
 	margin-bottom: 1em;
 	text-align: center;
-	background-color: #eee;
+	/*background-color: #fff;*/
+	color: #222;
 }
 
-p.subtitle {
-	padding: 1em 10% .5em;
+@media screen and (max-width: 999px) {
+	p.subtitle {
+		padding: 1em 7% .5em;
+	}
 }
 
 @media screen and (min-width: 1000px) {
-
 	p.subtitle {
-		padding: 1.5em 20% .5em;
+		padding: 1.5em 15% .5em;
 	}
 }
 
@@ -334,19 +361,30 @@ div._flex-container.what-we-do > * {
 	padding: 2em 1em;
 	margin: 1em auto;
 	border-radius: .5em;
-	background-color: #eee;
-	box-shadow: 0 0 .5em rgba(50,50,70,.5);
+	background-color: #fff;
+	box-shadow: .5em 1em 2em rgba(16,112,177,.2);
 	transition: box-shadow .2s linear;
 }
-div._flex-container.what-we-do > :hover {
-	box-shadow: .1em .2em 1.2em rgba(50,50,90,.5);
+div._flex-container.what-we-do > :is(:hover, :focus) {
+	box-shadow: .7em 1.2em 2em rgba(16,112,177,.4);
 }
 
 img.what-we-do {
 	display: block;
 	margin: 0 auto;
-	width: 50px;
-	height: 50px;
+	height: 110px;
+}
+img.card-img1 {
+	position: relative;
+	left: -6%;
+}
+img.card-img2 {
+	position: relative;
+	left: 1%;
+}
+img.card-img3 {
+	position: relative;
+	left: -4%;
 }
 
 h4.what-we-do,
@@ -356,7 +394,7 @@ p.what-we-do {
 
 a.learn-more {
 	display: inline-block;
-	color: darkblue;
+	color: rgb(16,112,177);
 }
 
 a.learn-more::after {
@@ -370,14 +408,14 @@ a.learn-more::after {
 	height: .2em;
 	width: 120%;
 	border-radius: 50%;
-	color: darkblue;
-	background-color: darkblue;
+	color: rgb(90,150,210);
+	background-color: rgb(90,150,210);
 	transform: scale(0);
 	transform-origin: center;
 	transition: transform .3s ease-in-out;
 }
 
-a.learn-more:hover::after {
+a.learn-more:is(:hover, :focus)::after {
 	/* a.learn-more:hover::after - применяется на псевдоэлемент ::after элемента a.learn-more, над последним курсор;
 	   меняет сжатие размера с 0% (см.выше) до 100%;
 	   transition: transform .3s ease-in-out (см.выше) обеспечивает изменение свойства transform в течение 0,3 сек */
@@ -407,6 +445,7 @@ div.app-wrap {
 	width: 100%;
 	margin: 1rem 0;
 	position: relative;
+	color: white;
 }
 
 div.app-present {
@@ -414,9 +453,11 @@ div.app-present {
 	   и при display:block с position:absolute отражаются поверх остального содержимого;
 	   поэтому остальное содержимое положено в div.app-present с index-z:1 (работает при position:relative); */
 	width: 100%;
-	min-height: 300px;
+	min-height: 250px;
 	padding: 1em 1.5em;
 	border-radius: 1em;
+	background-size: cover;
+	background-position: center;
 	position: relative;
 	z-index: 1;
 	background-color: #aaa;
@@ -424,13 +465,16 @@ div.app-present {
 		transform .4s ease-in-out,
 		box-shadow .4s ease-in-out;
 }
+div.sparklite      { background-image: url("img/app-sparklite.jpg"); }
+div.car-repetition { background-image: url("img/app-car-repetition.jpg"); }
+div.smart-home     { background-image: url("img/app-smarthome.jpg"); }
 
 div.app-wrap::before,
 div.app-wrap::after {
 	content: '';
 	display: block;
 	border-radius: 1em;
-	background-color: rgba(127,127,127,.6);
+	background-color: rgba(31,63,127,.6);
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -441,25 +485,25 @@ div.app-wrap::after {
 		box-shadow .4s ease-in-out;
 }
 
-div.app-wrap:hover > div.app-present {
+div.app-wrap:is(:hover, :focus) > div.app-present {
 	transform: translate(-1em, .5em);
-	box-shadow: 0.5em 0.5em .5em rgba(0,0,0,.4);
+	box-shadow: 0.5em 0.5em .5em rgba(31,63,127,.4);
 }
-div.app-wrap:hover:before {
-	box-shadow: 0 .25em .5em rgba(0,0,0,.4);
+div.app-wrap:is(:hover, :focus):before {
+	box-shadow: 0 .25em .5em rgba(31,63,127,.4);
 }
-div.app-wrap:hover::after {
+div.app-wrap:is(:hover, :focus)::after {
 	transform: translate(1em, -0.5em);
 }
-
-div.sparklite      { /*background-image: url("img/_");*/ }
-div.car-repetition { /*background-image: url("img/_");*/ }
-div.smart-home     { /*background-image: url("img/_");*/ }
 
 
 @media screen and (min-width: 500px) {
 
-	div.app-present,
+	div.app-present {
+		min-height: 300px;
+		padding: 2em 3em;
+		border-radius: 1.5em;
+	}
 	div.app-wrap::before,
 	div.app-wrap::after {
 		padding: 2em 3em;
@@ -468,6 +512,10 @@ div.smart-home     { /*background-image: url("img/_");*/ }
 }
 
 @media screen and (min-width: 1000px) {
+
+	div.app-present {
+		min-height: 480px;
+	}
 
 	div.app-wrap {
 		/* начальный размер позволяет вместить два элемента, равноменое изменение размеров при подгонке под контейнер
@@ -488,12 +536,42 @@ div.smart-home     { /*background-image: url("img/_");*/ }
 /* с о д е р ж и м о е (contacts) */
 
 section.header-prominent {
-	background-color: rgba(63,127,190,.3);
+	position: relative;
+	background-color: rgba(58,133,217,1);
+	background-image:
+		linear-gradient(
+			to right,
+			rgba(58,133,217,1),
+			rgba(58,133,217,1) 50%,
+			rgba(146,203,251,1) 50%,
+			rgba(146,203,251,1) 100%;
+		);
+}
+
+/* два костыля, ибо этот linear-gradient, почему-то отказывается работать */
+.crutch-left {
+	width: 50vw;
+	position: absolute;
+	left: 0;
+	right: 50vw;
+	top: 0;
+	bottom: 0;
+	background-color: rgb(58,133,217);
+}
+.crutch-left {
+	width: 50vw;
+	position: absolute;
+	left: 50vw;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgb(119,181,240);
 }
 
 div.header-prominent {
 	padding: .9em 1.5em;
 	margin-bottom: 1em;
+	background-image: url('img/contacts-head_bg.jpg');
 	text-align: center;
 }
 
@@ -514,8 +592,8 @@ div.header-prominent {
 	justify-content: space-between;
 	align-items: stretch;
 	border-radius: .5rem;
-	background-color: #eee;
-	box-shadow: 0 0 .5em rgba(50,50,70,.5);
+	background-color: #fff;
+	box-shadow: .5em 1em 2em rgba(16,112,177,.2);
 }
 
 .send-us-message p {
@@ -542,20 +620,23 @@ div.header-prominent {
 	cursor: auto;
 }
 
-input#send-us-message-submit {
+:is(button, input, a, label).blue-btn {
 	color: white;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	background-color: rgb(90,150,210);
+	padding: 1rem 2rem;
 	border: 0;
 	border-radius: .7em;
 	box-shadow: .25em .5em 1em rgba(90,150,210,.5);
 	transition:
+		color .5s ease-in-out,
+		background-color .5s ease-in-out,
 		box-shadow .1s linear,
 		text-shadow .2s ease-in-out;
 	cursor: pointer;
 }
-input#send-us-message-submit:hover {
+:is(button, input, a, label).blue-btn:is(:hover, :focus) {
 	color: rgb(150,90,210);
 	outline: 2px solid rgba(150,90,210,.5);
 	outline-offset: -2px;
@@ -564,7 +645,7 @@ input#send-us-message-submit:hover {
 		0 0 .5em white,
 		0 0 .1em white;
 }
-input#send-us-message-submit:active {
+:is(button, input, a, label).blue-btn:active {
 	box-shadow: 0 0 1em rgb(90,150,210,.3);
 }
 
@@ -598,14 +679,6 @@ img#contacts-img {
 		align-self: stretch;
 		max-width: unset;
 		width: 55%;
-		padding: 2.5em 2em;
-		display: flex;
-		flex-flow: column nowrap;
-		justify-content: space-between;
-		align-items: stretch;
-		border-radius: .5rem;
-		background-color: #eee;
-		box-shadow: 0 0 .5em rgba(50,50,70,.5);
 	}
 }
 
@@ -621,6 +694,34 @@ img#contacts-img {
 	height: 100%;
 	padding: 1px;
 	box-shadow: 0 0 .4em rgba(50,50,70,.5);
+}
+
+ul.contacts-column > li {
+	padding: .4rem;
+}
+
+.list-icon {
+	height: 1em;
+	margin-right: .5em;
+}
+
+a.contacts-column {
+	display: inline-block;
+}
+
+a.contacts-column::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 2px;
+	position: relative;
+	background-color: rgb(90,150,210);
+	transform: scale(0);
+	transform-origin: left;
+	transition: transform .3s ease-in-out;
+}
+a.contacts-column:is(:hover, :focus)::after {
+	transform: scale(1);
 }
 
 @media screen and (min-width: 1000px) {
@@ -679,6 +780,7 @@ li.footer-contacts.email::before  { content: "E. "; }
 p.rights {
 	margin: 2em 0;
 	padding: 0 .5em;
+	color: #aaa;
 }
 
 @media screen and (min-width: 500px) {

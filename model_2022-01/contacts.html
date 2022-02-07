@@ -4,38 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>HW | contacts</title>
-
 	<link rel="stylesheet" href="styles.css">
-	<script type="text/javascript" src="minors.js"></script>
 
 </head>
 
 <body>
 	<section class="supraheader"><div class="_container">
 		<header class="intro contacts">
-			<a href="index.html" class="nav home">home</a>
-			<span>i'm the header here!</span>
-			<label for="error-toggle" class="nav contacts">contacts</label>
-			<!--
-				<img class="logo"></img>
-				<nav>
-					<ul class="nav">
-						<li class="nav"><a class="nav">home</a></li>
-						<li class="nav"><a class="nav">about</a></li>
-						<li class="nav"><a class="nav">contacts</a></li>
-					</ul>
-				</nav>
-			-->
+			<a href="index.html" class="nav home"><img src="img/icon_logo.svg"></a>
+			<label for="error-toggle" class="nav contacts"><img src="img/icon_book.svg"></label>
 
 			<input type="checkbox" class="_toggle" id="error-toggle"></input>
 			<div class="error-message">
 				<p class="error-message" lang="ru">Это самое...<br>Вы как бы уже здесь.</p>
-				<label for="error-toggle" class="error-message">принято</label>
+				<label for="error-toggle" class="error-message blue-btn">принято</label>
 			</div>
 		</header>
 	</div></section>
 
-	<section class="header-prominent"><div class="_container header-prominent">
+	<section class="header-prominent"> <div class="crutch-left"></div> <div class="crutch-right"></div>
+	<div class="_container header-prominent">
 		<h3 class="">contact us</h1>
 		<p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 	</div></section>
@@ -46,21 +34,21 @@
 			<p>full name<br><input type="text" name="guestName" placeholder="Your Name"></p>
 			<p>email<br><input type="email" name="guestEmail" placeholder="Your Email"></p>
 			<p>message<br><textarea name="gestMessage_Text" placeholder="Your Message" wrap="soft"></textarea></p>
-			<p><input type="submit" id="send-us-message-submit" value="submit"></p>
+			<p><input type="submit" id="send-us-message-submit" value="submit" class="blue-btn"></p>
 		</form>
 
-		<img src="" alt="" class="contacts" id="contacts-img"></img>
-		<h4 class="contacts address">address</h4>
-		<p class="contacts address">Id convallis placerat sit sed duis id amet volutpat quam a, pharetra.</p>
-		<h4 class="contacts phone">phone</h4>
-		<ul class="contacts tel"><!--
-		 --><li>+62-812-7313-4321</li><!--
-		 --><li>+62-817-000-1234</li><!--
+		<img src="img/contacts_img.png" alt="красивая картинка" class="contacts-column" id="contacts-img"></img>
+		<h4 class="contacts-column address">address</h4>
+		<p class="contacts-column address">Id convallis placerat sit sed duis id amet volutpat quam a, pharetra.</p>
+		<h4 class="contacts-column phone">phone</h4>
+		<ul class="contacts-column tel"><!--
+		 --><li><img class="list-icon" src="img/icon_tel.svg"> +62-812-7313-4321</li><!--
+		 --><li><img class="list-icon" src="img/icon_tel.svg"> +62-817-000-1234</li><!--
 	 --></ul>
-		<h4 class="contacts online-services">inline service</h4>
-		<ul class="contacts online-services"><!--
-		 --><li><a href="#">www.afrianska.com</a></li><!--
-		 --><li><a href="#">hello.afrian@gmail.com</a></li><!--
+		<h4 class="contacts-column online-services">inline service</h4>
+		<ul class="contacts-column online-services"><!--
+		 --><li><a class="contacts-column" href="#"><img class="list-icon" src="img/icon_globe.svg">www.afrianska.com</a></li><!--
+		 --><li><a class="contacts-column" href="#"><img class="list-icon" src="img/icon_mail.svg">hello.afrian@gmail.com</a></li><!--
 	 --></ul>
 	</div></section>
 
@@ -77,7 +65,7 @@
 				<h3 class="last hello-header">interested to work with our team?</h3>
 				<p class="last hello-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
-			<button class="lets-talk" id="lets-talk" onclick="setNext('lets-talk', refuses)">Let's talk</button>
+			<button class="blue-btn lets-talk" id="lets-talk">Let's talk</button>
 		</div>
 		<footer class="last">
 			<div class="footer-contacts">
@@ -90,5 +78,7 @@
 			<p class="rights">all rights reserved</p>
 		</footer>
 	</div></section>
+
+	<script type="text/javascript" src="minors.js"></script>
 </body>
 </html>
