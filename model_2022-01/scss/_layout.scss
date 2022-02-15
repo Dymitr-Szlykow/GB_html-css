@@ -1,0 +1,308 @@
+._container {
+	/* обеспечивает единое выравние по центру;
+	   position:relative устанавливает данные элементы как точки отсчета для наследников с position:absolute
+	   (position:absolute отсчитывается от верхнего левого угла ближайшего предка с position:relative,
+	   если такого нет - от body); */
+	margin: 0 auto;
+	position: relative;
+
+	@include on-small {
+		max-width: $content-width-small;
+	}
+
+	@include on-medium {
+		max-width: $content-width-medium;
+	}
+
+	@include on-normal {
+		max-width: $content-width-large;
+	}
+}
+
+._flex-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: space-between;
+	column-gap: 2rem;
+
+	@include on-normal {
+		flex-flow: row wrap;
+		align-items: stretch;
+		justify-content: space-between;
+	}
+
+	& > * {
+		flex: initial;
+	}
+}
+
+._toggle {
+	display: none;
+}
+
+/* к н о п к и */
+
+.BEM_btn {
+
+	&__general {
+		color: white;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		background-color: $color-button-filler;
+		padding: 1rem 2rem;
+		border: 2px solid transparent;
+		border-radius: .7em;
+		box-shadow: .25em .5em 1em rgba($color-button-filler,.5);
+		transition:
+			color .5s ease-in-out,
+			background-color .5s ease-in-out,
+			box-shadow .1s linear,
+			text-shadow .2s ease-in-out;
+		cursor: pointer;
+
+		// &:is(:hover, :focus)
+		&:hover,
+		&:focus {
+			color: $color-button-accent;
+			border-color: rgba($color-button-accent,.5);
+			text-shadow:
+				0 0 1em white,
+				0 0 .5em white,
+				0 0 .1em white;
+		}
+
+		&:active {
+			box-shadow: 0 0 1em rgba($color-button-filler,.3);
+		}
+	}
+
+	&--error {
+		margin: 2em;
+		font-size: 1.2rem;
+		letter-spacing: 1px;
+		opacity: .9;
+
+		// &:is(:hover, :focus)
+		&:hover,
+		&:focus {
+			color: rgb(90,127,90);
+			background-color: #eee;
+			text-shadow: none;
+		}
+
+		&:active {
+			background-color: #212121;
+		}
+	}
+
+	// &--home-start {}
+
+	&--footer {
+		display: block;
+		width: 200px;
+		min-height: 4em;
+		padding: .5em 1em;
+		opacity: .8;
+		font-size: var(--fs-body);
+		font-weight: bold;
+		background-color: lightblue;
+		color: #333;
+
+		@include on-small {
+			margin: -3em auto 1em;
+		}
+
+		@include on-medium {
+			min-width: 25%;
+			width: 200px;
+		}
+
+		@include on-normal {
+			width: 20%;
+			position: absolute;
+			right: 0;
+			top: 30%;
+		}
+	}
+}
+
+
+/* общее: h e a d e r */
+
+.BEM_header {
+	padding: 1em 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+	&__icon {
+		height: 100%;
+	}
+
+	&__item {
+		cursor: pointer;
+		color: #333;
+		position: relative;
+
+		&--home::after,
+		&--contacts::before {
+			position: absolute;
+			color: #222;
+			font-size: 1.75rem;
+			opacity: 0;
+			transition:
+				color .2s .1s ease-in-out,
+				text-shadow .4s ease-in-out,
+				opacity .2s ease-in-out;
+		}
+
+		&--home {
+
+			&::after {
+				content: ' home';
+				left: 130%;
+				top: 20%;
+			}
+
+			// &:is(:hover, :focus)::after
+			&:hover::after,
+			&:focus::after {
+				opacity: 0.8;
+				text-shadow:
+					0 0 .5em $color-secondary,
+					0 0 .1em $color-secondary;
+			}
+		}
+
+		&--contacts {
+
+			&::before {
+				content: 'contacts ';
+				right: 130%;
+				top: 20%;
+			}
+
+			// &:is(:hover, :focus)::before
+			&:hover::before,
+			&:focus::before {
+				opacity: 0.8;
+				text-shadow:
+					0 0 .5em $color-secondary,
+					0 0 .1em $color-secondary;
+			}
+		}
+	}
+}
+
+
+/* общее: f o o t e r */
+
+.BEM_footer {
+
+	&__container-outter {
+		background: $color-footer-bkg;
+		overflow-y: auto;
+	}
+
+	&__container-inner {
+		overflow-y: auto;
+		color: white;
+	}
+}
+
+.BEM_footer-upper::after {
+	content: "";
+	display: block;
+	width: 90%;
+	height: 1px;
+	margin: 1em auto 2em;
+	background-color: grey;
+	opacity: .5;
+}
+
+
+// .BEM_footer-lower {}
+
+.BEM_footer-contacts {
+
+	// &__list {}
+
+	&__item {
+		width: 80%;
+		padding: 0 1.2em;
+		margin: .5em auto;
+		text-indent: -1.2em;
+
+		@include on-normal {
+			width: 25%;
+			margin: 0 1em;
+			text-align: center;
+		}
+	
+		&--address::before { content: "A. "; }
+		&--tel::before     { content: "T. "; }
+		&--email::before   { content: "E. "; }
+	}
+}
+
+.BEM_copyright {
+	margin: 2em 0;
+	padding: 0 .5em;
+	opacity: .75;
+}
+
+
+/* р е г у л я р н о е */
+
+.BEM_content {
+
+	&-main {
+		background: linear-gradient(180deg, $color-main-bkg 1%, rgba($color-secondary,0) 5%);
+	}
+
+	&-article {
+		width: 100%;
+		padding: 2em 0;
+	
+		&__header {
+			padding: .9em 1.5em;
+			margin-bottom: 1em;
+			text-align: center;
+			color: #222;
+		}
+
+		&__subtitle {
+
+			@include on-small {
+				padding: 1em 7% .5em;
+			}
+			@include on-medium {
+				padding: 1em 7% .5em;
+			}
+			@include on-normal {
+				padding: 1.5em 15% .5em;
+			}
+		}
+	}
+}
+
+.BEM_side-textblock {
+	width: 70%;
+	min-width: 300px;
+	margin: 10vh 0;
+	padding: 1rem 0;
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+
+	@include on-normal {
+		width: 50%;
+		padding: 1.5rem 2rem 1.5rem 0;
+	}
+
+	&__text {
+		margin-top: 3em;
+		margin-bottom: 3em;
+		padding-right: 4em;
+	}
+}

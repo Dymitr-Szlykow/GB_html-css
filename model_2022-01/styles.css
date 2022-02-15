@@ -1,4 +1,4 @@
-/* п о в с е м е с т н о е */
+/*  B A S E  | п о в с е м е с т н о е  */
 
 *,
 *::before,
@@ -15,17 +15,18 @@
 	outline: none;
 }
 
-
-:root {
-	/* определяет "переменные" (custom properties) для селектора,
-	   данные значения будут видимы для всех его наследников */
-	--fs-h1: 2rem;
-	--fs-h3: 1.5rem;
-	--fs-h4: 1.125rem;
-	--fs-body: 1rem;
+@media (max-width: 599px) {
+	:root {
+		/* определяет "переменные" (custom properties) для селектора,
+		   данные значения будут видимы для всех его наследников */
+		--fs-h1: 2rem;
+		--fs-h3: 1.5rem;
+		--fs-h4: 1.125rem;
+		--fs-body: 1rem;
+	}
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) and (max-width: 1023px) {
 	:root {
 		/* переопределяет "переменные" если ширина экрана не меньше 500px */
 		--fs-h1: 3rem;
@@ -35,7 +36,7 @@
 	}
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
 	:root {
 		/* переопределяет "переменные" если ширина экрана не меньше 1000px */
 		--fs-h1: 3.5rem;
@@ -59,21 +60,73 @@ h4::first-letter {
 
 /* назначает по всему документу размеры шрифтов,
    определенные выше относительно ширины экрана */
-h1     { font-size: var(--fs-h1); }
-h3     { font-size: var(--fs-h3); }
-h4,
-header { font-size: var(--fs-h4); }
-textarea,
-p, li { font-size: var(--fs-body);
+h1 {
+	 font-size: var(--fs-h1);
+	}
+h3 {
+	font-size: var(--fs-h3);
+}
+h4, header {
+	font-size: var(--fs-h4);
+}
+textarea, p, li {
+	font-size: var(--fs-body);
 	cursor: default;
 	list-style-type: none;
 }
-
 
 a {
 	text-decoration: none;
 	color: inherit;
 }
+
+
+/*  L A Y O U T  */
+
+._container.contacts-main-content {
+	display: grid;
+	margin: 2em auto;
+	gap: 2rem;
+}
+
+@media screen and (min-width: 1000px) {
+
+	._container.contacts-main-content {
+		/*flex-flow: column wrap-reverse;
+		justify-content: space-evenly;
+		align-items: flex-end;
+		align-content: space-between;
+		height: 700px;*/
+		/* grid-template создает семь строк и две равные колонки,
+		   дает имена линиям, ограничивающим участок 'form' */
+		margin: 2em auto;
+		grid-template-columns: 1fr [form-start] 1fr [form-end];
+		grid-template-rows: minmax(250px, auto) repeat(5, max-content) minmax(150px, auto);
+		gap: 1rem;
+	}
+	._container.contacts-main-content > * {
+		grid-column: 1;
+	}
+	._container.contacts-main-content > form {
+		/* переписывает .BEM_contacts__main > *
+		   располагает элемент в своем родителе с display:grid в области
+		   grid-column - вертикально между линиями с именами 'form-start' и 'form-end',
+		   grid-row - растягивает на все строки;
+		   display:flex - сам располагает детей как flexible box; */
+		/*grid-area: form;*/
+		grid-column: form-start / form-end;
+		grid-row: 1 / -1;
+	}
+	form.send-us-message + * {
+		align-self: end;
+	}
+	._container.contacts-main-content > :last-child {
+		align-self: start;
+	}
+}
+
+
+/*  M O D U L E  */
 
 input._toggle {
 	/* прячет input[type="checkbox"], тот активируется через label, см.index.html */
@@ -94,21 +147,6 @@ input._toggle {
 }
 
 /* о б щ е е */
-
-body {
-	/* тень по краям экрана */
-	/*background:
-		linear-gradient(
-			to right,
-			rgba(0,0,0,.4) 0%,
-			rgba(0,0,0,.2) 5%,
-			rgba(0,0,0,.0) 20%,
-			rgba(0,0,0,.0) 80%,
-			rgba(0,0,0,.2) 95%,
-			rgba(0,0,0,.4) 100%
-			),
-		#f0f0ff;*/
-}
 
 section.home-start {
 	background: linear-gradient(0deg, #ebf3fb 8%, rgba(152,195,232,0) 31%);
@@ -180,7 +218,7 @@ article {
 
 	._container.home-start {
 		background-size: unset;
-		background-position: right center;
+		background-position: right 15% bottom 10%;
 	}
 
 	._flex-container {
@@ -274,13 +312,17 @@ p.hello-text {
 		opacity .2s ease-in-out;
 }
 
-.nav.home:is(:hover, :focus)::after {
+/*.nav.home:is(:hover, :focus)::after*/
+.nav.home:hover::after,
+.nav.home:focus::after {
 	opacity: 0.8;
 	text-shadow:
 		0 0 .5em rgb(152,195,232),
 		0 0 .1em rgb(152,195,232);
 }
-.nav.contacts:is(:hover, :focus)::before {
+/*.nav.contacts:is(:hover, :focus)::before*/
+.nav.contacts:hover::before,
+.nav.contacts:focus::before {
 	opacity: 0.8;
 	text-shadow:
 		0 0 .5em rgb(152,195,232),
@@ -316,7 +358,9 @@ label.error-message {
 	/*background-color: rgb(90,127,90);*/
 	opacity: .9;
 }
-label.error-message:is(:hover, :focus) {
+/*label.error-message:is(:hover, :focus)*/
+label.error-message:hover,
+label.error-message:focus {
 	color: rgb(90,127,90);
 	background-color: #eee;
 	text-shadow: none;
@@ -365,7 +409,9 @@ div._flex-container.what-we-do > * {
 	box-shadow: .5em 1em 2em rgba(16,112,177,.2);
 	transition: box-shadow .2s linear;
 }
-div._flex-container.what-we-do > :is(:hover, :focus) {
+/*div._flex-container.what-we-do > :is(:hover, :focus)*/
+div._flex-container.what-we-do > :hover,
+div._flex-container.what-we-do > :focus {
 	box-shadow: .7em 1.2em 2em rgba(16,112,177,.4);
 }
 
@@ -415,7 +461,9 @@ a.learn-more::after {
 	transition: transform .3s ease-in-out;
 }
 
-a.learn-more:is(:hover, :focus)::after {
+/*a.learn-more:is(:hover, :focus)::after*/
+a.learn-more:hover::after,
+a.learn-more:focus::after {
 	/* a.learn-more:hover::after - применяется на псевдоэлемент ::after элемента a.learn-more, над последним курсор;
 	   меняет сжатие размера с 0% (см.выше) до 100%;
 	   transition: transform .3s ease-in-out (см.выше) обеспечивает изменение свойства transform в течение 0,3 сек */
@@ -485,14 +533,20 @@ div.app-wrap::after {
 		box-shadow .4s ease-in-out;
 }
 
-div.app-wrap:is(:hover, :focus) > div.app-present {
+/*div.app-wrap:is(:hover, :focus) > div.app-present*/
+div.app-wrap:hover > div.app-present,
+div.app-wrap:focus > div.app-present {
 	transform: translate(-1em, .5em);
 	box-shadow: 0.5em 0.5em .5em rgba(31,63,127,.4);
 }
-div.app-wrap:is(:hover, :focus):before {
+/*div.app-wrap:is(:hover, :focus):before*/
+div.app-wrap:hover:before,
+div.app-wrap:focus:before {
 	box-shadow: 0 .25em .5em rgba(31,63,127,.4);
 }
-div.app-wrap:is(:hover, :focus)::after {
+/*div.app-wrap:is(:hover, :focus)::after*/
+div.app-wrap:hover::after,
+div.app-wrap:focus::after {
 	transform: translate(1em, -0.5em);
 }
 
@@ -544,13 +598,12 @@ section.header-prominent {
 			rgba(58,133,217,1),
 			rgba(58,133,217,1) 50%,
 			rgba(146,203,251,1) 50%,
-			rgba(146,203,251,1) 100%;
+			rgba(146,203,251,1) 100%
 		);
 }
 
 /* два костыля, ибо этот linear-gradient, почему-то отказывается работать */
 .crutch-left {
-	width: 50vw;
 	position: absolute;
 	left: 0;
 	right: 50vw;
@@ -558,8 +611,7 @@ section.header-prominent {
 	bottom: 0;
 	background-color: rgb(58,133,217);
 }
-.crutch-left {
-	width: 50vw;
+.crutch-right {
 	position: absolute;
 	left: 50vw;
 	right: 0;
@@ -582,10 +634,7 @@ div.header-prominent {
 	gap: 2rem;
 }
 
-._flex-container.contacts > * {
-	width: 90%;
-}
-._flex-container.contacts > :first-child {
+form.send-us-message {
 	padding: 2.5em 2em;
 	display: flex;
 	flex-flow: column nowrap;
@@ -620,41 +669,55 @@ div.header-prominent {
 	cursor: auto;
 }
 
-:is(button, input, a, label).blue-btn {
+/*:is(button, input, a, label).blue-btn*/
+button.blue-btn,
+input.blue-btn,
+a.blue-btn,
+label.blue-btn {
 	color: white;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	background-color: rgb(90,150,210);
 	padding: 1rem 2rem;
-	border: 0;
+	border: 2px solid transparent;
 	border-radius: .7em;
 	box-shadow: .25em .5em 1em rgba(90,150,210,.5);
 	transition:
 		color .5s ease-in-out,
 		background-color .5s ease-in-out,
-		box-shadow .1s linear,
-		text-shadow .2s ease-in-out;
+		border-color .3s ease-in-out,
+		text-shadow .2s ease-in-out,
+		box-shadow .1s linear;
 	cursor: pointer;
 }
-:is(button, input, a, label).blue-btn:is(:hover, :focus) {
+/*:is(button, input, a, label).blue-btn:is(:hover, :focus)*/
+button.blue-btn:hover,
+button.blue-btn:focus,
+input.blue-btn:hover,
+input.blue-btn:focus,
+a.blue-btn:hover,
+a.blue-btn:focus,
+label.blue-btn:hover,
+label.blue-btn:focus {
 	color: rgb(150,90,210);
-	outline: 2px solid rgba(150,90,210,.5);
-	outline-offset: -2px;
+	border-color: rgba(150,90,210,.5);
 	text-shadow:
 		0 0 1em white,
 		0 0 .5em white,
 		0 0 .1em white;
 }
-:is(button, input, a, label).blue-btn:active {
+/*:is(button, input, a, label).blue-btn:active*/
+button.blue-btn:active,
+input.blue-btn:active,
+a.blue-btn:active,
+label.blue-btn:active {
 	box-shadow: 0 0 1em rgb(90,150,210,.3);
 }
 
-img#contacts-img {
+img.contacts-column {
 	display: block;
-	height: 150px;
-	width: max-content;
-	align-self: center;
-	flex: initial;
+	/*width: max-content;*/
+	justify-self: center;
 }
 
 @media screen and (min-width: 1000px) {
@@ -720,7 +783,9 @@ a.contacts-column::after {
 	transform-origin: left;
 	transition: transform .3s ease-in-out;
 }
-a.contacts-column:is(:hover, :focus)::after {
+/*a.contacts-column:is(:hover, :focus)::after*/
+a.contacts-column:hover::after,
+a.contacts-column:focus::after {
 	transform: scale(1);
 }
 
@@ -803,4 +868,5 @@ p.rights {
 	li.footer-contacts {
 		width: 25%;
 		margin: 0 1em;
+	}
 }

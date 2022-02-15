@@ -4,100 +4,109 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>HW | home</title>
-	<link rel="stylesheet" href="styles.css">
+	<!-- <link rel="stylesheet" href="styles.css"> -->
+	<!-- <link rel="stylesheet" href="styles_BEM.css"> -->
+	<link rel="stylesheet" href="scss/main.css">
 
 </head>
 
 <body>
 	<!-- section обеспечивает фон на всю ширину экрана, ._container задает единую ширину содержимому, см. CSS -->
-	<section class="home-start"><div class="_container home-start">
-		<header class="intro">
-			<label for="error-toggle" class="nav home"><img src="img/icon_logo.svg"></label>
-			<a href="contacts.html" class="nav contacts"><img src="img/icon_book.svg"></a>
+	<section class="home-start BEM_home-start__background"><div class="_container home-start BEM_home-start">
+		<header class="intro BEM_header">
+			<label for="error-toggle" class="nav home BEM_header__item BEM_header__item--home">
+				<img src="img/icon_logo.svg" class="BEM_header__icon" alt="home">
+			</label>
+			<a href="contacts.html" class="nav contacts BEM_header__item BEM_header__item--contacts">
+				<img src="img/icon_book.svg" class="BEM_header__icon" alt="contacts">
+			</a>
 
 			<!-- невидимый input[type="checkbox"] включается через label[for="error-toggle"],
 			     должен обязательно идти перед div, на который влияет, см. (input#error-toggle:checked ~ div.error-message) в CSS -->
-			<input type="checkbox" class="_toggle" id="error-toggle"></input>
-			<div class="error-message" id="popup">
-				<p class="error-message" lang="ru">Это самое...<br>Вы как бы уже здесь.</p>
-				<label for="error-toggle" class="error-message blue-btn">принято</label>
+			<input type="checkbox" class="_toggle BEM_error__chkbox" id="error-toggle" />
+			<div class="error-message BEM_error" id="popup">
+				<p class="error-message BEM_error__message" lang="ru">Это самое...<br>Вы как бы уже здесь.</p>
+				<label for="error-toggle" class="error-message blue-btn BEM_btn__general BEM_btn--error">принято</label>
 			</div>
 		</header>
 
-		<div class="hello">
-			<h1 class="hello-header">new automation tool for you</h1>
-			<p class="hello-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-			<a href="#" class="hello blue-btn">See our project</a>
+		<div class="hello BEM_side-textblock">
+			<h1 class="hello-header BEM_side-textblock__header">new automation tool for you</h1>
+			<p class="hello-text BEM_side-textblock__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			<a href="#" class="hello blue-btn BEM_btn__general BEM_btn--home-start">See our project</a>
 		</div>
 	</div></section>
 
-	<section class="content"><div class="_container content">
-		<article class="what-we-do">
-			<h3 class="article-header article-title what-we-do content">what we do to help our clients grow in the digital era</h3>
-			<div class="what-we-do _flex-container">
-				<div>
-					<img src="img/card1.png" alt="" class="what-we-do card-img1">
-					<h4 class="content what-we-do">make your business more famous on the internet</h4>
-					<p class="what-we-do">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<a href="#" class="learn-more">learn more</a>
+	<section class="content BEM_content-main"><div class="_container content">
+
+		<article class="what-we-do BEM_content-article --BEM_what-we-do">
+			<h3 class="article-header article-title what-we-do content BEM_content-article__header --BEM_what-we-do__header">what we do to help our clients grow in the digital era</h3>
+			<div class="what-we-do _flex-container BEM_what-we-do__card-container">
+				<div class="BEM_card">
+					<img src="img/card1.png" alt="" class="what-we-do card-img1 BEM_card__img BEM_card__img--1">
+					<h4 class="content what-we-do BEM_card__text">make your business more famous on the internet</h4>
+					<p class="what-we-do BEM_card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<a href="#" class="learn-more BEM_card__link">learn more</a>
 				</div>
 
-				<div>
-					<img src="img/card2.png" alt="" class="what-we-do card-img2">
-					<h4 class="content what-we-do">bring technology to your comfortable home</h4>
-					<p class="what-we-do">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<a href="#" class="learn-more">learn more</a>
+				<div class="BEM_card">
+					<img src="img/card2.png" alt="" class="what-we-do card-img2 BEM_card__img BEM_card__img--2">
+					<h4 class="content what-we-do BEM_card__text">bring technology to your comfortable home</h4>
+					<p class="what-we-do BEM_card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<a href="#" class="learn-more BEM_card__link">learn more</a>
 				</div>
 
-				<div>
-					<img src="img/card3.png" alt="" class="what-we-do card-img3">
-					<h4 class="content what-we-do">build your digital product that is suitable for your needs</h4>
-					<p class="what-we-do">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<a href="#" class="learn-more">learn more</a>
+				<div class="BEM_card">
+					<img src="img/card3.png" alt="" class="what-we-do card-img3 BEM_card__img BEM_card__img--3">
+					<h4 class="content what-we-do BEM_card__text">build your digital product that is suitable for your needs</h4>
+					<p class="what-we-do BEM_card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<a href="#" class="learn-more BEM_card__link">learn more</a>
 				</div>
 			</div>
 		</article>
 
-		<article class="finished-proj">
-			<div class="article-header finished-proj">
-				<h3 class="article-title">our finished projects</h3>
-				<p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		<article class="finished-proj BEM_content-article --BEM_projects">
+			<div class="article-header finished-proj BEM_content-article__header --BEM_projects__header">
+				<h3 class="article-title BEM_projects__header--heading">our finished projects</h3>
+				<p class="subtitle BEM_projects__header--subheader BEM_content-article__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
 
-			<div class="_flex-container finished-proj">
+			<div class="_flex-container finished-proj BEM_projects__container">
 				<!-- вложенный div.app-present нужен, чтобы содержимое не перекрывали псевдоэлементы div.app-wrap::before и div.app-wrap::after, см. CSS -->
-				<div class="app-wrap"><div class="app-present smart-home">
-					<h4 class="content">smart home installation</h4>
+				<div class="app-wrap BEM_project__wrap BEM_project__wrap--smarthome"><div class="app-present smart-home BEM_project__face BEM_project__face--smarthome">
+					<h4 class="content BEM_projects__title BEM_project__title--smarthome">smart home installation</h4>
 				</div></div>
 
-				<div class="app-wrap"><div class="app-present sparklite">
-					<h4 class="content">sparklite app</h4>
+				<div class="app-wrap BEM_project__wrap"><div class="app-present sparklite BEM_project__face BEM_project__face--sparklite">
+					<h4 class="content BEM_projects__title BEM_project__title--sparklite">sparklite app</h4>
 				</div></div>
 
-				<div class="app-wrap"><div class="app-present car-repetition">
-					<h4 class="content">car-repetition app</h4>
+				<div class="app-wrap BEM_project__wrap"><div class="app-present car-repetition BEM_project__face BEM_project__face--car">
+					<h4 class="content BEM_projects__title BEM_project__title--car">car-repetition app</h4>
 				</div></div>
 			</div>
 		</article>
+
 	</div></section>
 
-	<section class="last"><div class="_container last">
-		<div class="prelast">
-			<div class="hello ">
-				<h3 class="last hello-header">interested to work with our team?</h3>
-				<p class="last hello-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	<section class="last BEM_footer__container-outter"><div class="_container last BEM_footer__container-inner">
+		<div class="prelast BEM_footer-upper">
+			<div class="hello BEM_side-textblock">
+				<h3 class="last hello-header BEM_side-textblock__header">interested to work with our team?</h3>
+				<p class="last hello-text BEM_side-textblock__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 			</div>
-			<button class="blue-btn lets-talk" id="lets-talk">Let's talk</button>
+			<button class="blue-btn lets-talk BEM_btn__general BEM_btn--footer" id="lets-talk">Let's talk</button>
 		</div>
-		<footer class="last">
-			<div class="footer-contacts">
-				<ul class="footer-contacts _flex-container"><!--
-				 --><li class="footer-contacts address">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><!--
-				 --><li class="footer-contacts tel">+62-812-7313-4321</li><!--
-				 --><li class="footer-contacts email">hello.afrian@gmail.com</li><!--
+
+		<footer class="last BEM_footer-lower">
+			<div class="footer-contacts BEM_footer-contacts">
+				<ul class="footer-contacts _flex-container BEM_footer-contacts__list"><!--
+				 --><li class="footer-contacts address BEM_footer-contacts__item BEM_footer-contacts__item--address">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li><!--
+				 --><li class="footer-contacts tel BEM_footer-contacts__item BEM_footer-contacts__item--tel">+62-812-7313-4321</li><!--
+				 --><li class="footer-contacts email BEM_footer-contacts__item BEM_footer-contacts__item--email">hello.afrian@gmail.com</li><!--
 			 --></ul>
 			</div>
-			<p class="rights">all rights reserved</p>
+			<p class="rights BEM_copyright">all rights reserved</p>
 		</footer>
 	</div></section>
 	

@@ -1,0 +1,891 @@
+/*  B A S E  | п о в с е м е с т н о е  */
+
+*,
+*::before,
+*::after {
+	/* отныне margin и padding обнулены, пока не укажу обратного;
+	   padding и border входят в width и height */
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Roboto, serif;
+}
+
+:focus {
+	outline: none;
+}
+
+/* определяет "переменные" (custom properties) для селектора;
+   данные значения будут видимы для всех его наследников */
+@media (max-width: 599px) {
+	:root {
+		--fs-h1: 2rem;
+		--fs-h3: 1.5rem;
+		--fs-h4: 1.125rem;
+		--fs-body: 1rem;
+	}
+}
+
+@media (min-width: 600px) and (max-width: 1023px) {
+	:root {
+		--fs-h1: 3rem;
+		--fs-h3: 2.25rem;
+		--fs-h4: 1.25rem;
+		--fs-body: 1rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	:root {
+		--fs-h1: 3.15rem;
+		--fs-h3: 2.75rem;
+		--fs-h4: 1.50rem;
+		--fs-body: 1.125rem;
+	}
+}
+
+
+/* увы, не все поддерживают :is */
+:is(h1, h3, h4),
+:-webkit-any(h1, h3, h4),
+:-matches(h1, h3, h4),
+:-moz-any(h1, h3, h4) {
+	line-height: 1;
+	text-transform: lowercase;
+	cursor: default;
+}
+:is(h1, h3, h4)::first-letter {
+	text-transform: uppercase;
+}
+h1, h3, h4 {
+	line-height: 1;
+	text-transform: lowercase;
+	cursor: default;
+}
+h1::first-letter,
+h3::first-letter,
+h4::first-letter {
+	text-transform: uppercase;
+}
+
+
+/* назначает по всему документу размеры шрифтов,
+   определенные выше относительно ширины экрана */
+h1 {
+	font-size: var(--fs-h1);
+}
+h3 {
+	font-size: var(--fs-h3);
+}
+h4 {
+	font-size: var(--fs-h4);
+}
+p, li {
+	font-size: var(--fs-body);
+	cursor: default;
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/*  L A Y O U T  */
+
+._toggle {
+	/* прячет input[type="checkbox"], тот активируется через label, см.index.html */
+	display: none;
+}
+
+._container {
+	/* обеспечивает единое выравние по центру;
+	   position:relative устанавливает данные элементы как точки отсчета для наследников с position:absolute
+	   (position:absolute отсчитывается от верхнего левого угла ближайшего предка с position:relative,
+	   если такого нет - от body); */
+	margin: 0 auto;
+	position: relative;
+}
+._flex-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: space-between;
+	column-gap: 2rem;
+}
+._flex-container > * {
+	/* наводится на всех непосредственных детей ._flex-container */
+	flex: initial;
+}
+
+
+/*  M O D U L E:  Block __ Element -- Modifier  */
+
+/*		с о д е р ж а н и е:
+
+	к н о п к и
+
+.BEM_btn__general
+.BEM_btn--error
+.BEM_btn--home-start					--
+.BEM_btn--footer						@media
+
+	общее: h e a d e r
+
+.BEM_header
+.BEM_header__item
+.BEM_header__item--home					--
+.BEM_header__item--contacts				--
+.BEM_header__icon
+
+	общее: f o o t e r
+
+.BEM_footer__container-outter
+.BEM_footer__container-inner
+.BEM_footer-upper
+.BEM_footer-textblock
+.BEM_footer-textblock__heading
+.BEM_footer-textblock__text
+
+.BEM_footer-lower
+.BEM_footer-contacts
+.BEM_footer-contacts__list				см. _flex-container
+.BEM_footer-contacts__item
+.BEM_footer-contacts__item--address
+.BEM_footer-contacts__item--tel
+.BEM_footer-contacts__item--email
+
+.BEM_copyright
+
+	р е г у л я р н о е
+
+.BEM_content-main
+.BEM_content-article
+.BEM_content-article__header
+.BEM_content-article__subtitle			@media
+.BEM_side-textblock
+.BEM_side-textblock__header				--
+.BEM_side-textblock__text
+
+	страница: h o m e - start
+
+.BEM_home-start__background
+.BEM_home-start							@media { background-image }
+
+.BEM_error
+.BEM_error__message
+.BEM_error__chkbox:checked
+
+	страница: h o m e - what we do
+
+.BEM_what-we-do
+.BEM_what-we-do__header					--
+.BEM_what-we-do__card-container			см. _flex-container
+.BEM_card								@media
+.BEM_card__img
+.BEM_card__img--1
+.BEM_card__img--2
+.BEM_card__img--3
+.BEM_card__text
+.BEM_card__link
+
+	страница: h o m e - projects
+
+.BEM_projects
+.BEM_projects__header					--
+.BEM_projects__header--heading			--
+.BEM_projects__header--subheader		--
+.BEM_projects__container				см. _flex-container
+
+.BEM_project__wrap
+.BEM_project__face						@media { min-height }
+.BEM_project__face--smarthome
+.BEM_project__face--sparklite
+.BEM_project__face--car
+.BEM_project__title
+.BEM_project__title--smarthome
+.BEM_project__title--sparklite
+.BEM_project__title--car
+
+	страница: c o n t a c t s
+
+.BEM_contact-top__outer
+.BEM_contact-top__crutch
+.BEM_contact-top__crutch--left
+.BEM_contact-top__crutch--right
+.BEM_contact-top__inner
+
+.BEM_contacts__main						grid; @media
+
+.BEM_contact-form
+.BEM_contact-form__text
+.BEM_contact-form__input
+.BEM_contact-form__textarea
+
+.BEM_contacts-column__img
+.BEM_contacts-column__item
+.BEM_contacts-column__link
+.BEM_contacts-column__icon
+
+.BEM_mapholder-outer
+.BEM_mapholder-inner
+.BEM_mapholder__map
+*/
+
+
+/* к н о п к и */
+
+.BEM_btn__general {
+	color: white;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	background-color: rgb(90,150,210);
+	padding: 1rem 2rem;
+	border: 2px solid transparent;
+	border-radius: .7em;
+	box-shadow: .25em .5em 1em rgba(90,150,210,.5);
+	transition:
+		color .5s ease-in-out,
+		background-color .5s ease-in-out,
+		border-color .3s ease-in-out,
+		text-shadow .2s ease-in-out,
+		box-shadow .1s linear;
+	cursor: pointer;
+}
+/*.BEM_btn__general:is(:hover, :focus)*/
+.BEM_btn__general:hover,
+.BEM_btn__general:focus {
+	color: rgb(150,90,210);
+	border-color: rgba(150,90,210,.5);
+	text-shadow:
+		0 0 1em white,
+		0 0 .5em white,
+		0 0 .1em white;
+}
+.BEM_btn__general:active {
+	box-shadow: 0 0 1em rgb(90,150,210,.3);
+}
+.BEM_btn--error {
+	margin: 2em;
+	font-size: 1.2rem;
+	letter-spacing: 1px;
+	opacity: .9;
+}
+/*.BEM_btn--error:is(:hover, :focus)*/
+.BEM_btn--error:hover,
+.BEM_btn--error:focus {
+	color: rgb(90,127,90);
+	background-color: #eee;
+	text-shadow: none;
+}
+.BEM_btn--error:active {
+	background-color: #212121;
+}
+.BEM_btn--footer {
+	display: block;
+	width: 200px;
+	min-height: 4em;
+	padding: .5em 1em;
+	opacity: .8;
+	font-size: var(--fs-body);
+	font-weight: bold;
+	background-color: lightblue;
+	color: #333;
+}
+
+/* общее: h e a d e r */
+
+.BEM_header {
+	padding: 1em 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.BEM_header__item {
+	cursor: pointer;
+	color: #333;
+	position: relative;
+}
+.BEM_header__item--home::after,
+.BEM_header__item--contacts::before {
+	position: absolute;
+	color: #222;
+	font-size: 1.75rem;
+	opacity: 0;
+	transition:
+		color .2s .1s ease-in-out,
+		text-shadow .4s ease-in-out,
+		opacity .2s ease-in-out;
+}
+.BEM_header__item--home::after {
+	content: ' home';
+	left: 130%;
+	top: 20%;
+}
+.BEM_header__item--contacts::before {
+	content: 'contacts ';
+	right: 130%;
+	top: 20%;
+}
+/*.BEM_header__item--home:is(:hover, :focus)::after*/
+.BEM_header__item--home:hover::after,
+.BEM_header__item--home:focus::after {
+	opacity: 0.8;
+	text-shadow:
+		0 0 .5em rgb(152,195,232),
+		0 0 .1em rgb(152,195,232);
+}
+/*.BEM_header__item--contacts:is(:hover, :focus)::before*/
+.BEM_header__item--contacts:hover::before,
+.BEM_header__item--contacts:focus::before {
+	opacity: 0.8;
+	text-shadow:
+		0 0 .5em rgb(152,195,232),
+		0 0 .1em rgb(152,195,232);
+}
+.BEM_header__icon {
+	height: 100%;
+}
+
+
+/* общее: f o o t e r */
+
+.BEM_footer__container-outter {
+	background: #316099;
+	overflow-y: auto;
+}
+.BEM_footer__container-inner {
+	overflow-y: auto;
+	color: white;
+}
+
+.BEM_footer-upper::after {
+	/* вместо <hr>;
+	   content: "" обязателен, чтобы псевдоэлементы ::before и ::after отображались;
+	   благодаря display:block и background-color отображаются как видимые блоки с заданными width и height; */
+	content: "";
+	display: block;
+	width: 90%;
+	height: 1px;
+	margin: 1em auto 2em;
+	background-color: grey;
+	opacity: .5;
+}
+
+.BEM_footer-contacts__item {
+	width: 80%;
+	padding: 0 1.2em;
+	margin: .5em auto;
+	text-indent: -1.2em;
+}
+.BEM_footer-contacts__item--address::before { content: "A. "; }
+.BEM_footer-contacts__item--tel::before     { content: "T. "; }
+.BEM_footer-contacts__item--email::before   { content: "E. "; }
+
+.BEM_copyright {
+	margin: 2em 0;
+	padding: 0 .5em;
+	color: #aaa;
+}
+
+
+/* р е г у л я р н о е */
+
+.BEM_content-main {
+	background: linear-gradient(180deg, #ebf3fb 1%, rgba(152,195,232,0) 5%);
+}
+.BEM_content-article {
+	/*width: 100%;*/
+	padding: 2em 0;
+}
+.BEM_content-article__header {
+	padding: .9em 1.5em;
+	margin-bottom: 1em;
+	text-align: center;
+	color: #222;
+}
+
+.BEM_side-textblock {
+	width: 70%;
+	min-width: 300px;
+	margin: 10vh 0;
+	padding: 1rem 0;
+	border-top-right-radius: 1em;
+	border-bottom-right-radius: 1em;
+}
+.BEM_side-textblock__text {
+	margin-top: 3em;
+	margin-bottom: 3em;
+	padding-right: 4em;
+}
+
+
+/* страница: h o m e - start */
+
+.BEM_home-start__background {
+	background: linear-gradient(0deg, #ebf3fb 8%, rgba(152,195,232,0) 31%);
+	overflow-y: auto;
+}
+.BEM_home-start {
+	min-height: 100vh;
+	padding-top: 2rem;
+}
+
+.BEM_error {
+	/* position:absolute вырывает элемент из общего потока (остальные строятся, будто этого элемента нет),
+	   отсчитывается от верхнего левого угла ближайшего предка с position:relative;
+	   z-index позволяет отображатся поверх элементов, встречающихся выше в дереве html-документа */
+	width: 350px;
+	position: absolute;
+	top: 20vh;
+	left: calc(50% - 175px);
+	border-radius: 1em;
+	padding: 2em;
+	z-index: 1;
+	background-color: #ccc;
+	color: #222;
+	opacity: .95;
+	text-align: center;
+	display: none;
+}
+.BEM_error__chkbox:checked ~ .BEM_error {
+	/* '~'' указывает на СЛЕДУЮЩИЕ элементы в ТОМ ЖЕ родителе;
+	   делает видимым div.error-message, когда checkbox включен */
+	display: block;
+}
+.BEM_error__message {
+	margin: 1em;
+	padding: .2em;
+	border-radius: 2em / 50%;
+}
+
+
+/* страница: h o m e - what we do */
+
+.BEM_card {
+	flex: initial;
+	max-width: 90%;
+	border-radius: .5em;
+	background-color: #fff;
+	box-shadow: .5em 1em 2em rgba(16,112,177,.2);
+	transition: box-shadow .2s linear;
+}
+/*.BEM_card:is(:hover, :focus)*/
+.BEM_card:hover,
+.BEM_card:focus {
+	box-shadow: .7em 1.2em 2em rgba(16,112,177,.4);
+}
+.BEM_card__img {
+	display: block;
+	margin: 0 auto;
+	height: 110px;
+}
+.BEM_card__img--1 {
+	position: relative;
+	left: -6%;
+}
+.BEM_card__img--2 {
+	position: relative;
+	left: 1%;
+}
+.BEM_card__img--3 {
+	position: relative;
+	left: -4%;
+}
+.BEM_card__text {
+	margin: 1em 0;
+}
+.BEM_card__link {
+	display: inline-block;
+	color: rgb(16,112,177);
+}
+.BEM_card__link::after {
+	/* content: "" обязателен, чтобы псевдоэлементы ::before и ::after отображались;
+	   благодаря display:block и background-color отображаются как видимые блоки с заданными width и height;
+	   transform:scale(0) сжимает до 0% (см. ниже) */
+	content: "";
+	display: block;
+	position: relative;
+	left: -10%;
+	height: .2em;
+	width: 120%;
+	border-radius: 50%;
+	background-color: rgb(90,150,210);
+	transform: scale(0);
+	transform-origin: center;
+	transition: transform .3s ease-in-out;
+}
+/*.BEM_card__link:is(:hover, :focus)::after*/
+.BEM_card__link:hover::after,
+.BEM_card__link:focus::after {
+	/* a.learn-more:hover::after - применяется на псевдоэлемент ::after элемента a.learn-more, над последним курсор;
+	   меняет сжатие размера с 0% (см.выше) до 100%;
+	   transition: transform .3s ease-in-out (см.выше) обеспечивает изменение свойства transform в течение 0,3 сек */
+	transform: scale(1);
+}
+
+
+/* страница: h o m e - projects */
+
+.BEM_project__wrap {
+	width: 100%;
+	margin: 1rem 0;
+	position: relative;
+	color: white;
+}
+.BEM_project__wrap::before,
+.BEM_project__wrap::after {
+	content: '';
+	display: block;
+	border-radius: 1em;
+	background-color: rgba(31,63,127,.6);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transition:
+		transform .4s ease-in-out,
+		box-shadow .4s ease-in-out;
+}
+/*.BEM_project__wrap:is(:hover, :focus) > .BEM_project__face*/
+.BEM_project__wrap:hover > .BEM_project__face,
+.BEM_project__wrap:focus > .BEM_project__face {
+	transform: translate(-1em, .5em);
+	box-shadow: 0.5em 0.5em .5em rgba(31,63,127,.4);
+}
+/*.BEM_project__wrap:is(:hover, :focus)::before*/
+.BEM_project__wrap:hover::before,
+.BEM_project__wrap:focus::before {
+	box-shadow: 0 .25em .5em rgba(31,63,127,.4);
+}
+/*.BEM_project__wrap:is(:hover, :focus)::after*/
+.BEM_project__wrap:hover::after,
+.BEM_project__wrap:focus::after {
+	transform: translate(1em, -0.5em);
+}
+.BEM_project__face {
+	/* псевдоэлементы ::before и ::after считаются содержимым своего элемента (div.app-wrap)
+	   и при display:block с position:absolute отражаются поверх остального содержимого;
+	   поэтому остальное содержимое положено в div.app-present с index-z:1 (работает при position:relative); */
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	z-index: 1;
+	background-color: #aaa;
+	transition:
+		transform .4s ease-in-out,
+		box-shadow .4s ease-in-out;
+}
+.BEM_project__face--smarthome { background-image: url("img/app-smarthome.jpg"); }
+.BEM_project__face--sparklite { background-image: url("img/app-sparklite.jpg"); }
+.BEM_project__face--car       { background-image: url("img/app-car-repetition.jpg"); }
+
+
+/* страница: c o n t a c t s */
+
+.BEM_contact-top__outer {
+	position: relative;
+	background-color: rgba(58,133,217,1);
+	background-image:
+		linear-gradient(
+			to right,
+			rgba(58,133,217,1),
+			rgba(58,133,217,1) 50%,
+			rgba(146,203,251,1) 50%,
+			rgba(146,203,251,1) 100%
+		);
+}
+.BEM_contact-top__crutch {
+	/* два костыля, ибо этот linear-gradient, почему-то отказывается работать */
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}
+.BEM_contact-top__crutch--left {
+	left: 0;
+	right: 50vw;
+	background-color: rgb(58,133,217);
+}
+.BEM_contact-top__crutch--right {
+	left: 50vw;
+	right: 0;
+	background-color: rgb(119,181,240);
+}
+.BEM_contact-top__inner {
+	padding: .9em 1.5em;
+	margin-bottom: 1em;
+	background-image: url('img/contacts-head_bg.jpg');
+	text-align: center;
+}
+
+.BEM_contacts__main {
+	display: grid;
+	margin: 2em auto;
+	gap: 2rem;
+}
+
+.BEM_contact-form {
+	padding: 2.5em 2em;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	border-radius: .5rem;
+	background-color: #fff;
+	box-shadow: .5em 1em 2em rgba(16,112,177,.2);
+}
+.BEM_contact-form__text {
+	line-height: 2.5em;
+	font-size: var(--fs-h4);
+}
+.BEM_contact-form__input {
+	width: 100%;
+	padding: 1rem 2rem;
+	font-size: var(--fs-body);
+	border: 2px solid rgb(175,200,220);
+	border-radius: .5rem;
+}
+.BEM_contact-form__textarea {
+	width: 100%;
+	min-height: 200px;
+	padding: 1rem 1.5rem;
+	font-size: var(--fs-body);
+	border: 2px solid rgb(175,200,220);
+	border-radius: .5rem;
+	resize: none;
+	cursor: auto;
+}
+
+.BEM_contacts-column__img {
+	/* выравнивает себя в центре ячейки grid */
+	display: block;
+	width: max-content;
+	justify-self: center;
+}
+.BEM_contacts-column__item {
+	padding: .4rem;
+}
+
+.BEM_contacts-column__link {
+	display: inline-block;
+}
+
+.BEM_contacts-column__link::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 2px;
+	position: relative;
+	background-color: rgb(90,150,210);
+	transform: scale(0);
+	transform-origin: left;
+	transition: transform .3s ease-in-out;
+}
+/*.BEM_contacts-column__link:is(:hover, :focus)::after*/
+.BEM_contacts-column__link:hover::after,
+.BEM_contacts-column__link:focus::after {
+	transform: scale(1);
+}
+
+.BEM_contacts-column__icon {
+	height: 1em;
+	margin-right: .5em;
+}
+
+.BEM_mapholder-inner {
+	padding: .5em 0 3em;
+	height: 500px;
+}
+.BEM_mapholder__map {
+	width: 100%;
+	height: 100%;
+	padding: 1px;
+	border: 0;
+	box-shadow: 0 0 .4em rgba(50,50,70,.5);
+}
+
+
+/*  а д а п т и в  */
+
+@media screen and (max-width: 599px) {
+
+	._container {
+		max-width: 300px;
+	}
+
+	.BEM_btn--footer {
+		margin: -3em auto 1em;
+	}
+
+	.BEM_content-article__subtitle {
+		padding: 1em 7% .5em;
+	}
+
+	.BEM_card {
+		padding: 2em 1em;
+		margin: 1em auto;
+	}
+
+	.BEM_project__face {
+		min-height: 250px;
+		padding: 1em 1.5em;
+		border-radius: 1em;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+
+	._container {
+		max-width: 550px;
+	}
+
+	.BEM_btn--footer {
+		min-width: 25%;
+		width: 200px;
+	}
+
+	.BEM_home-start {
+		background-image: url('img/home-start_bg.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: bottom;
+	}
+
+	.BEM_content-article__subtitle {
+		padding: 1em 7% .5em;
+	}
+
+	.BEM_card {
+		max-width: 70%;
+		margin: 1em auto;
+		padding: 2em 2.5em;
+	}
+
+	.BEM_project__wrap::before,
+	.BEM_project__wrap::after {
+		padding: 2em 3em;
+		border-radius: 1.5em;
+	}
+	.BEM_project__face {
+		min-height: 300px;
+		padding: 2em 3em;
+		border-radius: 1.5em;
+	}
+
+}
+
+@media screen and (min-width: 1024px) {
+
+	._container {
+		max-width: 1000px;
+	}
+	._flex-container {
+		flex-flow: row wrap;
+		align-items: stretch;
+		justify-content: space-between;
+	}
+
+	.BEM_btn--footer {
+		width: 20%;
+		position: absolute;
+		right: 0;
+		top: 30%;
+	}
+
+	.BEM_home-start {
+		background-image: url('img/home-start_bg.png');
+		background-repeat: no-repeat;
+		background-position: right 15% bottom 10%;
+	}
+	.BEM_side-textblock {
+		width: 50%;
+		padding: 1.5rem 2rem 1.5rem 0;
+	}
+
+	.BEM_footer-contacts__item {
+		width: 25%;
+		margin: 0 1em;
+		text-align: center;
+	}
+
+	.BEM_content-article__subtitle {
+		padding: 1.5em 15% .5em;
+	}
+
+	.BEM_card {
+		max-width: 30%;
+		padding: 2em 1.5em;
+	}
+
+	.BEM_project__wrap {
+		/* начальный размер позволяет вместить два элемента, равноменое изменение размеров при подгонке под контейнер
+		   https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Controlling_Ratios_of_Flex_Items_Along_the_Main_Ax */
+		flex: 1 1 40%; /* <flex-grow> <flex-shrink> <flex-basis> */
+	}
+	/*.BEM_project__wrap:is(::before, ::after)*/
+	.BEM_project__wrap::before,
+	.BEM_project__wrap::after {
+		padding: 2em 3em;
+		border-radius: 1.5em;
+	}
+	.BEM_project__wrap--smarthome {
+		flex-basis: 100%;
+	}
+	.BEM_project__face {
+		min-height: 480px;
+		padding: 2em 3em;
+		border-radius: 1.5em;
+	}
+	.BEM_project__face--smarthome {
+		text-align: right;
+	}
+
+	.BEM_contact-form {
+		align-self: stretch;
+	}
+
+	.BEM_mapholder-inner {
+		padding: 3em;
+	}
+	.BEM_mapholder__map {
+		border-radius: 3px;
+		padding: 2px;
+	}
+
+
+	.BEM_contacts__main {
+		/*flex-flow: column wrap-reverse;
+		justify-content: space-evenly;
+		align-items: flex-end;
+		align-content: space-between;
+		height: 700px;*/
+		/* grid-template создает семь строк и две равные колонки,
+		   дает имена линиям, ограничивающим участок 'form' */
+		margin: 2em auto;
+		grid-template-columns: 1fr [form-start] 1fr [form-end];
+		grid-template-rows: minmax(250px, auto) repeat(5, max-content) minmax(150px, auto);
+		gap: 1rem;
+	}
+	.BEM_contacts__main > * {
+		grid-column: 1;
+	}
+	.BEM_contacts__main > .BEM_contact-form {
+		/* переписывает .BEM_contacts__main > *
+		   располагает элемент в своем родителе с display:grid в области
+		   grid-column - вертикально между линиями с именами 'form-start' и 'form-end',
+		   grid-row - растягивает на все строки;
+		   display:flex - сам располагает детей как flexible box; */
+		/*grid-area: form;*/
+		grid-column: form-start / form-end;
+		grid-row: 1 / -1;
+	}
+	.BEM_contact-form + * {
+		align-self: end;
+	}
+	.BEM_contacts__main > :last-child {
+		align-self: start;
+	}
+}

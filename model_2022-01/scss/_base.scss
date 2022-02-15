@@ -1,0 +1,68 @@
+// @use 'general';
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Roboto, serif;
+}
+
+:focus {
+	outline: none;
+}
+
+:root {
+	@include on-small {
+		--fs-h1: 2rem;
+		--fs-h3: 1.5rem;
+		--fs-h4: 1.125rem;
+		--fs-body: 1rem;
+	}
+
+	@include on-medium {
+		--fs-h1: 3rem;
+		--fs-h3: 2.25rem;
+		--fs-h4: 1.25rem;
+		--fs-body: 1rem;
+	}
+
+	@include on-normal {
+		--fs-h1: 3.5rem;
+		--fs-h3: 2.75rem;
+		--fs-h4: 1.50rem;
+		--fs-body: 1.125rem;
+	}
+}
+
+// :is(h1, h3, h4)
+h1, h3, h4 {
+	line-height: 1;
+	text-transform: lowercase;
+	cursor: default;
+
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}
+
+h1 {
+	font-size: var(--fs-h1);
+}
+h3 {
+	font-size: var(--fs-h3);
+}
+h4, header {
+	font-size: var(--fs-h4);
+}
+textarea, p, li {
+	font-size: var(--fs-body);
+	cursor: default;
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}

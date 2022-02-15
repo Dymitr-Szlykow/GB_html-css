@@ -1,0 +1,65 @@
+// @use 'sass:map';
+
+$br-medium: 600px;
+$br-large: 1024px;
+$br-xlarge: 1600px;
+
+$content-width-small: 300px;
+$content-width-medium: 550px;
+$content-width-large: 1000px;
+
+$color-main-bkg: #ebf3fb;
+$color-accent-main: rgb(152,195,232);
+$color-secondary: rgb(16,112,177);
+$color-footer-bkg: #316099;
+$color-button-filler: rgb(90,150,210);
+$color-button-accent: rgb(150,90,210);
+
+
+@mixin on-small {
+	@media screen and (max-width: ($br-medium - 1px)) {
+		@content;
+	}
+}
+
+@mixin on-medium {
+	@media screen and (min-width: $br-medium) and (max-width: ($br-large - 1px)) {
+		@content;
+	}
+}
+
+@mixin on-normal {
+	@media screen and (min-width: $br-large) {
+		@content;
+	}
+}
+
+// не используется
+@mixin on-large {
+	@media screen and (min-width: $br-xlarge) {
+		@content;
+	}
+}
+
+
+// $breakpoints: (
+// 	"br-small": max-width 599px,
+// 	"br-medium": 600px 1023px,
+// 	"br-large": 1024px,
+// 	'br-xlarge': 1600px
+// );
+// @mixin on-small {
+// 	@include breakpoint($br-small) {
+// 		@content;
+// 	}
+// }
+// @mixin on-medium {
+// 	@include breakpoint($br-medium) {
+// 		@content;
+// 	}
+// }
+// @mixin on-large {
+// 	@include breakpoint($br-large) {
+// 		@content;
+// 	}
+// }

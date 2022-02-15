@@ -1,0 +1,177 @@
+/* страница: c o n t a c t s */
+
+.BEM_contact-top {
+
+	&__outer {
+		position: relative;
+		background-color: rgba(58,133,217,1);
+		background-image:
+			linear-gradient(
+				to right,
+				rgba(58,133,217,1),
+				rgba(58,133,217,1) 50%,
+				rgba(146,203,251,1) 50%,
+				rgba(146,203,251,1) 100%
+			);
+	}
+
+	&__crutch {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+
+		&--left {
+			left: 0;
+			right: 50vw;
+			background-color: rgb(58,133,217);
+		}
+		&--right {
+			left: 50vw;
+			right: 0;
+			background-color: rgb(119,181,240);
+		}
+	}
+
+	&__inner {
+		padding: .9em 1.5em;
+		margin-bottom: 1em;
+		background-image: url('../img/contacts-head_bg.jpg');
+		text-align: center;
+	}
+}
+
+.BEM_contacts__main {
+	display: grid;
+	margin: 2em auto;
+	gap: 2rem;
+
+	@include on-normal {
+		margin: 2em auto;
+		gap: 2rem;
+		grid-template-columns: 1fr [form-start] 1fr [form-end];
+		grid-template-rows: minmax(250px, auto) repeat(5, auto) minmax(150px, auto);
+
+		& > * {
+			grid-column: 1;
+		}
+
+		&  > .BEM_contact-form {
+			/*grid-area: form;*/
+			grid-column: form-start / form-end;
+			grid-row: 1 / -1;
+		}
+
+		& > :last-child {
+			align-self: start;
+		}
+	}
+}
+
+.BEM_contact-form {
+	padding: 2.5em 2em;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	border-radius: .5rem;
+	background-color: #fff;
+	box-shadow: .5em 1em 2em rgba($color-secondary,.2);
+
+	@include on-normal {
+		align-self: stretch;
+	}
+
+	&__text {
+		line-height: 2.5em;
+		font-size: var(--fs-h4);
+	}
+
+	&__input {
+		width: 100%;
+		padding: 1rem 2rem;
+		font-size: var(--fs-body);
+		border: 2px solid rgb(175,200,220);
+		border-radius: .5rem;
+	}
+
+	&__textarea {
+		width: 100%;
+		min-height: 200px;
+		padding: 1rem 1.5rem;
+		font-size: var(--fs-body);
+		border: 2px solid rgb(175,200,220);
+		border-radius: .5rem;
+		resize: none;
+		cursor: auto;
+	}
+}
+
+.BEM_contacts-column {
+
+	&__img {
+		display: block;
+		width: max-content;
+		justify-self: center;
+
+		@include on-normal {
+			align-self: end;
+		}
+	}
+
+	&__item {
+		padding: .4rem;
+	}
+
+	&__link {
+		display: inline-block;
+
+		&::after {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 2px;
+			position: relative;
+			background-color: $color-button-filler;
+			transform: scale(0);
+			transform-origin: left;
+			transition: transform .3s ease-in-out;
+		}
+
+		// &:is(:hover, :focus)::after
+		&:hover::after,
+		&:focus::after {
+			transform: scale(1);
+		}
+	}
+
+	&__icon {
+		height: 1em;
+		margin-right: .5em;
+	}
+}
+
+.BEM_mapholder {
+
+	// &-outer {}
+
+	&-inner {
+		padding: .5em 0 3em;
+		height: 500px;
+
+		@include on-normal {
+			padding: 3em;
+		}
+	}
+
+	&__map {
+		width: 100%;
+		height: 100%;
+		padding: 1px;
+		box-shadow: 0 0 .4em rgba(50,50,70,.5);
+
+		@include on-normal {
+			border-radius: 3px;
+			padding: 2px;
+		}
+	}
+}
